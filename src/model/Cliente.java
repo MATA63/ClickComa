@@ -10,5 +10,9 @@ package model;
  * @author cmelo
  */
 public class Cliente {
+    private Integer id;
+    private String nome;
+    private Mesa mesa;
+    private Pedido pedido;
     
 }

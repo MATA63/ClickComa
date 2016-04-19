@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Collection;
+
 /**
  *
  * @author cmelo
@@ -14,8 +16,8 @@ public class Restaurante {
     private String nome;
     private String CNPJ;
     private Cardapio cardapio;
-    private Funcionario funcionario;
-    private Mesa mesa;
+    private Collection funcionarios;
+    private Collection mesas;
     
     
     public Integer getId(){
@@ -71,29 +73,29 @@ public class Restaurante {
     /**
      * @return the funcionario
      */
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public Collection getFuncionarios() {
+        return funcionarios;
     }
 
     /**
      * @param funcionario the funcionario to set
      */
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setFuncionarios(Collection funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     /**
      * @return the mesa
      */
-    public Mesa getMesa() {
-        return mesa;
+    public Collection getMesa() {
+        return mesas;
     }
 
     /**
      * @param mesa the mesa to set
      */
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
+    public void setMesa(Collection mesas) {
+        this.mesas = mesas;
     }
         
 }
