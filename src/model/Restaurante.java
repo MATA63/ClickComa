@@ -14,8 +14,7 @@ import java.util.Collection;
 public class Restaurante {
     private Integer id;
     private String nome;
-    private String CNPJ;
-    private Cardapio cardapio;
+    private String CNPJ;    
     private Collection funcionarios;
     private Collection mesas;
     
@@ -54,21 +53,7 @@ public class Restaurante {
      */
     public void setCNPJ(String CNPJ) {
         this.CNPJ = CNPJ;
-    }
-
-    /**
-     * @return the cardapio
-     */
-    public Cardapio getCardapio() {
-        return cardapio;
-    }
-
-    /**
-     * @param cardapio the cardapio to set
-     */
-    public void setCardapio(Cardapio cardapio) {
-        this.cardapio = cardapio;
-    }
+    }    
 
     /**
      * @return the funcionario

@@ -11,6 +11,7 @@ package model;
  */
 public class Funcionario {
     private Integer id;
+    private Restaurante restaurante;
     private String nome;
     private String CPF;
 
@@ -54,6 +55,20 @@ public class Funcionario {
      */
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    /**
+     * @return the restaurante
+     */
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    /**
+     * @param restaurante the restaurante to set
+     */
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
     
     

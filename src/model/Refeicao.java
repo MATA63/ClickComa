@@ -11,6 +11,7 @@ package model;
  */
 public class Refeicao {
     private Integer id;
+    private Cardapio cardapio;
     private String nome;
     private float preco;
 
@@ -54,6 +55,20 @@ public class Refeicao {
      */
     public void setPreco(float preco) {
         this.preco = preco;
+    }
+
+    /**
+     * @return the cardapio
+     */
+    public Cardapio getCardapio() {
+        return cardapio;
+    }
+
+    /**
+     * @param cardapio the cardapio to set
+     */
+    public void setCardapio(Cardapio cardapio) {
+        this.cardapio = cardapio;
     }
     
     

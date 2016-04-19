@@ -13,6 +13,7 @@ import java.util.Collection;
  */
 public class Cardapio {
     private Integer id;
+    private Restaurante restaurante;
     private Collection refeicoes;
 
     /**
@@ -41,6 +42,20 @@ public class Cardapio {
      */
     public void setRefeicoes(Collection refeicoes) {
         this.refeicoes = refeicoes;
+    }
+
+    /**
+     * @return the restaurante
+     */
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    /**
+     * @param restaurante the restaurante to set
+     */
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
     
 }
