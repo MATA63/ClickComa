@@ -5,8 +5,6 @@
  */
 package model;
 
-import java.util.Collection;
-
 /**
  *
  * @author cmelo
@@ -73,4 +71,10 @@ public class Cliente {
         this.email = email;
     }
     
+    public Cliente(Integer idCliente,String nome, String cpf, String email ){
+            setidCliente(idCliente);
+            setNome(nome);
+            setCpf(cpf);
+            setEmail(email);
+    }
 }

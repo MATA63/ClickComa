@@ -85,4 +85,13 @@ public class Item {
     public void setNecessitaPreparo(Boolean necessitaPreparo) {
         this.necessitaPreparo = necessitaPreparo;
     }
+    
+    public Item(Integer idItem, Integer idTipo, String nome, Boolean disponivel, Boolean necessitaPreparo ){
+        setIdItem(idItem);
+        setIdTipo(idTipo);
+        setNome(nome);
+        setDisponivel(disponivel);
+        setNecessitaPreparo(necessitaPreparo);        
+    }
+    
 }

@@ -14,7 +14,7 @@ public class Funcionario {
     private String cpf;
     private String numeroPis;
     private String nome;
-    private String Cargo;
+    private String cargo;
 
     /**
      * @return the idFuncionario
@@ -76,13 +76,21 @@ public class Funcionario {
      * @return the Cargo
      */
     public String getCargo() {
-        return Cargo;
+        return cargo;
     }
 
     /**
      * @param Cargo the Cargo to set
      */
-    public void setCargo(String Cargo) {
-        this.Cargo = Cargo;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public Funcionario(Integer idFuncionario, String cpf, String numeroPis, String nome, String cargo){
+        setIdFuncionario(idFuncionario);
+        setCpf(cpf);
+        setNumeroPis(numeroPis);
+        setNome(nome);
+        setCargo(cargo);
     }
 }
