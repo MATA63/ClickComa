@@ -26,7 +26,7 @@ public class ClienteDao {
     public void salvarCliente(Cliente cliente) throws IOException{
             try{
                     bw = new BufferedWriter(new FileWriter("Cliente.cc", true));  
-                    bw.write("<idCliente>"+cliente.getidCliente().toString()
+                    bw.write("<idCliente>"+cliente.getIdCliente().toString()
                                 +"<nome>"+cliente.getNome()
                                 +"<cpf>"+cliente.getCpf()
                                 +"<email>"+cliente.getEmail()+"<fdl>");
@@ -62,6 +62,6 @@ public class ClienteDao {
             System.out.println("Ocorreu um erro ao ler o arquivo Cliente.cc. Exception: "+e.getMessage());
         }finally{
         }
-        return (List<Cliente>) listCliente;
+        return listCliente;
     }
 }

@@ -18,14 +18,14 @@ public class Cliente {
     /**
      * @return the idCliente
      */
-    public Integer getidCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
     /**
      * @param idCliente the idCliente to set
      */
-    public void setidCliente(Integer idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -72,9 +72,12 @@ public class Cliente {
     }
     
     public Cliente(Integer idCliente,String nome, String cpf, String email ){
-            setidCliente(idCliente);
+            setIdCliente(idCliente);
             setNome(nome);
             setCpf(cpf);
             setEmail(email);
+    }
+	public Cliente(){
+        
     }
 }

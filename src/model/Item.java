@@ -94,4 +94,7 @@ public class Item {
         setNecessitaPreparo(necessitaPreparo);        
     }
     
+    public Item(){
+        
+    }
 }

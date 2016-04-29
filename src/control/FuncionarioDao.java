@@ -22,7 +22,7 @@ public class FuncionarioDao {
     private BufferedWriter bw = null;
     private BufferedReader fr = null;
 
-    public void salvarItem(Funcionario funcionario) throws IOException{
+    public void salvarFuncionario(Funcionario funcionario) throws IOException{
         try{
                 bw = new BufferedWriter(new FileWriter("Funcionario.cc", true));  
                 bw.write("<idFuncionario>"+funcionario.getIdFuncionario().toString()
