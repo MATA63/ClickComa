@@ -165,9 +165,9 @@ public class Bd {
     /**
      * @return the nextIdRestaurante
      */
-    public static Integer getNextIdRestaurante() {
-        return nextIdRestaurante;
-    }
+    //public static Integer getNextIdRestaurante() {
+     //   return nextIdRestaurante;
+    //}
 
     /**
      * @param aNextIdRestaurante the nextIdRestaurante to set
