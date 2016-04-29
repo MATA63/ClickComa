@@ -10,23 +10,22 @@ package model;
  * @author cmelo
  */
 public class Mesa {
-    private Integer id;
+    private Integer idMesa;
     private Integer numero;
-    private Restaurante restaurante;
-    private Integer capacidade;
+    private String local;
 
     /**
-     * @return the id
+     * @return the idMesa
      */
-    public Integer getId() {
-        return id;
+    public Integer getidMesa() {
+        return idMesa;
     }
 
     /**
-     * @param id the id to set
+     * @param idMesa the idMesa to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setidMesa(Integer id) {
+        this.idMesa = idMesa;
     }
 
     /**
@@ -44,31 +43,16 @@ public class Mesa {
     }
 
     /**
-     * @return the restaurante
+     * @return the local
      */
-    public Restaurante getRestaurante() {
-        return restaurante;
+    public String getlocal() {
+        return local;
     }
 
     /**
-     * @param restaurante the restaurante to set
+     * @param local the local to set
      */
-    public void setRestaurante(Restaurante restaurante) {
-        this.restaurante = restaurante;
+    public void setlocal(String local) {
+        this.local = local;
     }
-
-    /**
-     * @return the capacidade
-     */
-    public Integer getCapacidade() {
-        return capacidade;
-    }
-
-    /**
-     * @param capacidade the capacidade to set
-     */
-    public void setCapacidade(Integer capacidade) {
-        this.capacidade = capacidade;
-    }
-    
 }

@@ -4,56 +4,118 @@
  * and open the template in the editor.
  */
 package model;
-
+import java.util.Date;
 /**
  *
  * @author cmelo
  */
 public class Pedido {
-    private Integer id;
-    private Cliente cliente;
-    private Refeicao refeicao;
+    private Integer idPedido;
+    private Conta Conta;
+    private Item item;
+    private Integer quantidade;
+    private Date dataHora;
+    private Funcionario Garcom;
+    private Funcionario Cozinheiro;
 
     /**
-     * @return the id
+     * @return the idPedido
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdPedido() {
+        return idPedido;
     }
 
     /**
-     * @param id the id to set
+     * @param idPedido the idPedido to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPedido(Integer idPedido) {
+        this.idPedido = idPedido;
     }
 
     /**
-     * @return the cliente
+     * @return the Conta
      */
-    public Cliente getCliente() {
-        return cliente;
+    public Conta getConta() {
+        return Conta;
     }
 
     /**
-     * @param cliente the cliente to set
+     * @param Conta the Conta to set
      */
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setConta(Conta Conta) {
+        this.Conta = Conta;
     }
 
     /**
-     * @return the refeicao
+     * @return the item
      */
-    public Refeicao getRefeicao() {
-        return refeicao;
+    public Item getItem() {
+        return item;
     }
 
     /**
-     * @param refeicao the refeicao to set
+     * @param item the item to set
      */
-    public void setRefeicao(Refeicao refeicao) {
-        this.refeicao = refeicao;
+    public void setItem(Item item) {
+        this.item = item;
     }
+
+    /**
+     * @return the quantidade
+     */
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    /**
+     * @param quantidade the quantidade to set
+     */
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    /**
+     * @return the dataHora
+     */
+    public Date getDataHora() {
+        return dataHora;
+    }
+
+    /**
+     * @param dataHora the dataHora to set
+     */
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    /**
+     * @return the Garcom
+     */
+    public Funcionario getGarcom() {
+        return Garcom;
+    }
+
+    /**
+     * @param Garcom the Garcom to set
+     */
+    public void setGarcom(Funcionario Garcom) {
+        this.Garcom = Garcom;
+    }
+
+    /**
+     * @return the Cozinheiro
+     */
+    public Funcionario getCozinheiro() {
+        return Cozinheiro;
+    }
+
+    /**
+     * @param Cozinheiro the Cozinheiro to set
+     */
+    public void setCozinheiro(Funcionario Cozinheiro) {
+        this.Cozinheiro = Cozinheiro;
+    }
+
+
     
 }

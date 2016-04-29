@@ -5,57 +5,38 @@
  */
 package model;
 
-import java.util.Collection;
+import java.util.List;
 
-/**
- *
- * @author cmelo
- */
 public class Cardapio {
-    private Integer id;
-    private Restaurante restaurante;
-    private Collection refeicoes;
+    private Integer idCardapio;
+    private List<Item> listItem;
 
     /**
-     * @return the id
+     * @return the idCardapio
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdCardapio() {
+        return idCardapio;
     }
 
     /**
-     * @param id the id to set
+     * @param idCardapio the idCardapio to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdCardapio(Integer idCardapio) {
+        this.idCardapio = idCardapio;
     }
 
     /**
-     * @return the refeicoes
+     * @return the listItem
      */
-    public Collection getRefeicoes() {
-        return refeicoes;
+    public List<Item> getListItem() {
+        return listItem;
     }
 
     /**
-     * @param refeicoes the refeicoes to set
+     * @param listItem the listItem to set
      */
-    public void setRefeicoes(Collection refeicoes) {
-        this.refeicoes = refeicoes;
+    public void setListItem(List<Item> listItem) {
+        this.listItem = listItem;
     }
 
-    /**
-     * @return the restaurante
-     */
-    public Restaurante getRestaurante() {
-        return restaurante;
-    }
-
-    /**
-     * @param restaurante the restaurante to set
-     */
-    public void setRestaurante(Restaurante restaurante) {
-        this.restaurante = restaurante;
-    }
-    
 }

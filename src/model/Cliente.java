@@ -12,23 +12,23 @@ import java.util.Collection;
  * @author cmelo
  */
 public class Cliente {
-    private Integer id;
+    private Integer idCliente;
     private String nome;
-    private Mesa mesa;
-    private Collection pedidos;
+    private String cpf;
+    private String email;
 
     /**
-     * @return the id
+     * @return the idCliente
      */
-    public Integer getId() {
-        return id;
+    public Integer getidCliente() {
+        return idCliente;
     }
 
     /**
-     * @param id the id to set
+     * @param idCliente the idCliente to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setidCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
     /**
@@ -48,29 +48,29 @@ public class Cliente {
     /**
      * @return the mesa
      */
-    public Mesa getMesa() {
-        return mesa;
+    public String getCpf() {
+        return cpf;
     }
 
     /**
-     * @param mesa the mesa to set
+     * @param cpf the cpf to set
      */
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     /**
-     * @return the pedidos
+     * @return the email
      */
-    public Collection getPedidos() {
-        return pedidos;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param pedidos the pedidos to set
+     * @param email the email to set
      */
-    public void setPedidos(Collection pedidos) {
-        this.pedidos = pedidos;
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }

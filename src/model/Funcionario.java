@@ -10,23 +10,52 @@ package model;
  * @author cmelo
  */
 public class Funcionario {
-    private Integer id;
-    private Restaurante restaurante;
+    private Integer idFuncionario;
+    private String cpf;
+    private String numeroPis;
     private String nome;
-    private String CPF;
+    private String Cargo;
 
     /**
-     * @return the id
+     * @return the idFuncionario
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdFuncionario() {
+        return idFuncionario;
     }
 
     /**
-     * @param id the id to set
+     * @param idFuncionario the idFuncionario to set
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdFuncionario(Integer idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
+
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    /**
+     * @return the numeroPis
+     */
+    public String getNumeroPis() {
+        return numeroPis;
+    }
+
+    /**
+     * @param numeroPis the numeroPis to set
+     */
+    public void setNumeroPis(String numeroPis) {
+        this.numeroPis = numeroPis;
     }
 
     /**
@@ -44,32 +73,16 @@ public class Funcionario {
     }
 
     /**
-     * @return the CPF
+     * @return the Cargo
      */
-    public String getCPF() {
-        return CPF;
+    public String getCargo() {
+        return Cargo;
     }
 
     /**
-     * @param CPF the CPF to set
+     * @param Cargo the Cargo to set
      */
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCargo(String Cargo) {
+        this.Cargo = Cargo;
     }
-
-    /**
-     * @return the restaurante
-     */
-    public Restaurante getRestaurante() {
-        return restaurante;
-    }
-
-    /**
-     * @param restaurante the restaurante to set
-     */
-    public void setRestaurante(Restaurante restaurante) {
-        this.restaurante = restaurante;
-    }
-    
-    
 }
