@@ -61,4 +61,31 @@ public class MesaDao {
         }
         return listMesa;
     }
+    
+    public Mesa abrirMesa(Integer idMesaProcurada) throws IOException{
+    try{
+        String linha;
+        Integer idMesa;
+        Integer numero;
+        String local;
+        fr = new BufferedReader(new FileReader("Mesa.cc"));
+
+        while ((linha = fr.readLine()) != null) {
+            idMesa =  Integer.parseInt(linha.substring(linha.indexOf("<idMesa>")+8, linha.indexOf("<numero>")));
+            numero = Integer.parseInt(linha.substring((linha.indexOf("<numero>")+8), linha.indexOf("<local>")));
+            local = linha.substring((linha.indexOf("<local>")+7), linha.indexOf("<fdl>"));
+            
+            if (idMesaProcurada == idMesa){
+                Mesa mesa = new Mesa(idMesa, numero, local);
+                return mesa;
+            }
+        }
+    }catch(Exception e){ 
+        System.out.println("Ocorreu um erro ao ler o arquivo Mesa.cc. Exception: "+e.getMessage());
+    }finally{
+    }
+    return null;
+    }
+    
+    
 }

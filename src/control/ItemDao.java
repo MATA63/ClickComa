@@ -66,4 +66,35 @@ public class ItemDao {
         }
         return listItem;
     }
+    
+    public Item abrirItem(Integer idItemProcurado) throws IOException{
+    try{
+        String linha;
+        Integer idItem;
+        Integer idTipo;
+        String nome;
+        Boolean disponivel;
+        Boolean necessitaPreparo;
+        fr = new BufferedReader(new FileReader("Item.cc"));
+
+        while ((linha = fr.readLine()) != null) {
+            idItem = Integer.parseInt(linha.substring(linha.indexOf("<idItem>")+8,linha.indexOf("<idTipo>")));
+            idTipo = Integer.parseInt(linha.substring(linha.indexOf("<idTipo>")+8, linha.indexOf("<nome>")));
+            nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<disponivel>"));
+            disponivel = Boolean.parseBoolean(linha.substring(linha.indexOf("<disponivel>")+12, linha.indexOf("<necessitaPreparo>")));
+            necessitaPreparo = Boolean.parseBoolean(linha.substring(linha.indexOf("<necessitaPreparo>")+18, linha.indexOf("<fdl>")));
+
+            if (idItemProcurado == idItem){
+                Item item = new Item(idItem, idTipo, nome, disponivel, necessitaPreparo);
+                return item;
+            }
+        }
+    }catch(Exception e){ 
+        System.out.println("Ocorreu um erro ao ler o arquivo Item.cc. Exception: "+e.getMessage());
+    }finally{
+    }
+    return null;
+    }
+    
+    
 }

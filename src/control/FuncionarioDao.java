@@ -66,4 +66,34 @@ public class FuncionarioDao {
         }
         return (List<Funcionario>) listFuncionario;
     }
+    
+    public Funcionario abrirFuncionario(Integer idFuncionarioProcurado) throws IOException{
+    try{
+        String linha;
+        Integer idFuncionario;
+        String cpf;
+        String numeroPis;
+        String nome;
+        String cargo;
+        fr = new BufferedReader(new FileReader("Funcionario.cc"));
+
+        while ((linha = fr.readLine()) != null) {
+            idFuncionario = Integer.parseInt(linha.substring(linha.indexOf("<idFuncionario>")+15, linha.indexOf("<cpf>")));
+            cpf = linha.substring((linha.indexOf("<cpf>")+5), linha.indexOf("<numeroPis>"));
+            numeroPis = linha.substring((linha.indexOf("<numeroPis>")+11), linha.indexOf("<nome>"));
+            nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<cargo>"));
+            cargo = linha.substring((linha.indexOf("<cargo>")+7), linha.indexOf("<fdl>"));
+
+            if (idFuncionarioProcurado == idFuncionario){
+                Funcionario funcionario = new Funcionario(idFuncionario, cpf, numeroPis, nome, cargo);
+                return funcionario;
+            }
+        }
+    }catch(Exception e){ 
+        System.out.println("Ocorreu um erro ao ler o arquivo Funcionario.cc. Exception: "+e.getMessage());
+    }finally{
+    }
+    return null;
+    }
+    
 }

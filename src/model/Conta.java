@@ -13,10 +13,11 @@ import java.util.Date;
  */
 public class Conta {
     private Integer idConta;
-    private Cliente idCliente;
-    private Mesa idMesa;
+    private Cliente cliente;
+    private Mesa mesa;
     private Date dataHoraInicioAtendimento;
     private Date dataHoraFimAtendimento;
+
 
     /**
      * @return the idConta
@@ -35,29 +36,29 @@ public class Conta {
     /**
      * @return the idCliente
      */
-    public Cliente getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     /**
-     * @param idCliente the idCliente to set
+     * @param cliente the idCliente to set
      */
-    public void setIdCliente(Cliente idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     /**
      * @return the idMesa
      */
-    public Mesa getIdMesa() {
-        return idMesa;
+    public Mesa getMesa() {
+        return mesa;
     }
 
     /**
-     * @param idMesa the idMesa to set
+     * @param mesa the idMesa to set
      */
-    public void setIdMesa(Mesa idMesa) {
-        this.idMesa = idMesa;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 
     /**
@@ -88,5 +89,16 @@ public class Conta {
         this.dataHoraFimAtendimento = dataHoraFimAtendimento;
     }
     
+    public Conta(Integer idConta, Cliente cliente, Mesa mesa, Date dataHoraInicioAtendimento, Date dataHoraFimAtendimento){
+        setIdConta(idConta);
+        setCliente(cliente);
+        setMesa(mesa);
+        setDataHoraInicioAtendimento(dataHoraInicioAtendimento);
+        setDataHoraFimAtendimento(dataHoraFimAtendimento);
+    }
+    
+    public Conta(){
+        
+    }
     
 }

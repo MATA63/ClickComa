@@ -11,15 +11,24 @@ import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
 import model.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author iandrade
  */
 public class Teste {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
        
         //Teste cliente::
-        /*Cliente cliente = new Cliente(3,"3","3333","333@zaroi.com");
+        /*Cliente cliente = new Cliente();
+        ClienteDao clienteDao = new ClienteDao();
+        cliente = clienteDao.abrirCliente(2);
+        if(true){};
+        
+        Cliente cliente = new Cliente(3,"3","3333","333@zaroi.com");
         ClienteDao clienteDao = new ClienteDao();
         clienteDao.salvarCliente(cliente);
          List<Cliente> listCliente = new ArrayList();
@@ -45,6 +54,10 @@ public class Teste {
          listItem = itemDao.abrirItem();
          if(true){}*/
         
+        Item item = new Item();
+        ItemDao itemDao = new ItemDao();
+        item = itemDao.abrirItem(2);
+        if(true){};
         
         //Teste Cardapio
         /* List<Item> listItem = new ArrayList();
@@ -70,6 +83,33 @@ public class Teste {
          MesaDao mesaDao = new MesaDao();
          listMesa = mesaDao.abrirMesa();
          if(true){}*/
+
+        //Teste Conta
+        /*Cliente cliente = new Cliente();
+        ClienteDao clienteDao = new ClienteDao();
+        cliente = clienteDao.abrirCliente(1);
+        if(true){};
+        
+        Mesa mesa = new Mesa();
+        MesaDao mesaDao = new MesaDao();
+        mesa = mesaDao.abrirMesa(1);        
+        
+        Date todaysDate = new Date();
+        Conta conta = new Conta(2,cliente,mesa,todaysDate,todaysDate);
+        ContaDao contaDao = new ContaDao();
+        contaDao.salvarConta(conta);
+         if(true){}
+        
+         List<Conta> listConta = new ArrayList();
+         ContaDao contaDao = new ContaDao();
+         listConta = contaDao.abrirConta();
+         if(true){}
+         
+        Conta conta = new Conta();
+        ContaDao contaDao = new ContaDao();
+        conta = contaDao.abrirConta(1);
+         if(true){}*/
+        
         
     }
 }
