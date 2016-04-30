@@ -12,7 +12,7 @@ package model;
 public class Funcionario {
     private Integer idFuncionario;
     private String cpf;
-    private String numeroPis;
+    private String numeroCtps;
     private String nome;
     private String cargo;
 
@@ -45,17 +45,17 @@ public class Funcionario {
     }
 
     /**
-     * @return the numeroPis
+     * @return the numeroCtps
      */
-    public String getNumeroPis() {
-        return numeroPis;
+    public String getNumeroCtps() {
+        return numeroCtps;
     }
 
     /**
-     * @param numeroPis the numeroPis to set
+     * @param numeroCtps the numeroCtps to set
      */
-    public void setNumeroPis(String numeroPis) {
-        this.numeroPis = numeroPis;
+    public void setNumeroCtps(String numeroCtps) {
+        this.numeroCtps = numeroCtps;
     }
 
     /**
@@ -86,11 +86,15 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public Funcionario(Integer idFuncionario, String cpf, String numeroPis, String nome, String cargo){
+    public Funcionario(Integer idFuncionario, String cpf, String numeroCtps, String nome, String cargo){
         setIdFuncionario(idFuncionario);
         setCpf(cpf);
-        setNumeroPis(numeroPis);
+        setNumeroCtps(numeroCtps);
         setNome(nome);
         setCargo(cargo);
+    }
+    
+    public Funcionario(){
+        
     }
 }

@@ -24,19 +24,19 @@ public class MesaDao {
     private BufferedReader fr = null;
 
     public void salvarMesa(Mesa mesa) throws IOException{
-            try{
-                    bw = new BufferedWriter(new FileWriter("Mesa.cc", true));  
-                    bw.write("<idMesa>"+mesa.getIdMesa().toString()
-                                +"<numero>"+mesa.getNumero().toString()
-                                +"<local>"+mesa.getLocal()+"<fdl>");
-                    bw.newLine();
-                    bw.flush();
-                    bw.close();    
-            }catch(Exception e){ 
-                System.out.println("Ocorreu um erro ao salvar no arquivo Mesa.cc. Exception: "+e.getMessage());
-            }finally{
-            }
-            System.out.println("Salvo com Sucesso!");
+        try{
+                bw = new BufferedWriter(new FileWriter("Mesa.cc", true));  
+                bw.write("<idMesa>"+mesa.getIdMesa().toString()
+                            +"<numero>"+mesa.getNumero().toString()
+                            +"<local>"+mesa.getLocal()+"<fdl>");
+                bw.newLine();
+                bw.flush();
+                bw.close();    
+        }catch(Exception e){ 
+            System.out.println("Ocorreu um erro ao salvar no arquivo Mesa.cc. Exception: "+e.getMessage());
+        }finally{
+        }
+        System.out.println("Salvo com Sucesso!");
     }
     
     public List<Mesa> abrirMesa() throws IOException{

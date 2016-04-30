@@ -11,13 +11,13 @@ import java.util.Date;
  */
 public class Pedido {
     private Integer idPedido;
-    private Conta Conta;
+    private Conta conta;
     private Item item;
     private Integer quantidade;
     private Date dataHora;
-    private Funcionario Garcom;
-    private Funcionario Cozinheiro;
-
+    private Funcionario garcom;
+    private Funcionario cozinheiro;
+    
     /**
      * @return the idPedido
      */
@@ -36,14 +36,14 @@ public class Pedido {
      * @return the Conta
      */
     public Conta getConta() {
-        return Conta;
+        return conta;
     }
 
     /**
      * @param Conta the Conta to set
      */
     public void setConta(Conta Conta) {
-        this.Conta = Conta;
+        this.conta = Conta;
     }
 
     /**
@@ -92,30 +92,42 @@ public class Pedido {
      * @return the Garcom
      */
     public Funcionario getGarcom() {
-        return Garcom;
+        return garcom;
     }
 
     /**
-     * @param Garcom the Garcom to set
+     * @param garcom the Garcom to set
      */
-    public void setGarcom(Funcionario Garcom) {
-        this.Garcom = Garcom;
+    public void setGarcom(Funcionario garcom) {
+        this.garcom = garcom;
     }
 
     /**
      * @return the Cozinheiro
      */
     public Funcionario getCozinheiro() {
-        return Cozinheiro;
+        return cozinheiro;
     }
 
     /**
-     * @param Cozinheiro the Cozinheiro to set
+     * @param cozinheiro the Cozinheiro to set
      */
-    public void setCozinheiro(Funcionario Cozinheiro) {
-        this.Cozinheiro = Cozinheiro;
+    public void setCozinheiro(Funcionario cozinheiro) {
+        this.cozinheiro = cozinheiro;
     }
 
-
+    public Pedido (Integer idPedido, Conta conta, Item item, Integer quantidade, Date dataHora, Funcionario garcom, Funcionario cozinheiro){
+        setIdPedido(idPedido);
+        setConta(conta);
+        setItem(item);
+        setQuantidade(quantidade);
+        setDataHora(dataHora);
+        setGarcom(garcom);
+        setCozinheiro(cozinheiro);
+    }
+    
+    public Pedido(){
+        
+    }
     
 }

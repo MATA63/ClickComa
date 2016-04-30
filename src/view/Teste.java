@@ -52,12 +52,11 @@ public class Teste {
          List<Item> listItem = new ArrayList();
          ItemDao itemDao = new ItemDao();
          listItem = itemDao.abrirItem();
-         if(true){}*/
-        
+         if(true){}
         Item item = new Item();
         ItemDao itemDao = new ItemDao();
         item = itemDao.abrirItem(2);
-        if(true){};
+        if(true){};*/
         
         //Teste Cardapio
         /* List<Item> listItem = new ArrayList();
@@ -110,6 +109,29 @@ public class Teste {
         conta = contaDao.abrirConta(1);
          if(true){}*/
         
+        //Teste Pedido
+        /* List<Conta> listConta = new ArrayList();
+         ContaDao contaDao = new ContaDao();
+         listConta = contaDao.abrirConta();
+         
+         List<Item> listItem = new ArrayList();
+         ItemDao itemDao = new ItemDao();
+         listItem = itemDao.abrirItem();
+         
+         List<Funcionario> listFuncionario = new ArrayList();
+         FuncionarioDao funcionarioDao = new FuncionarioDao();
+         listFuncionario = funcionarioDao.abrirFuncionario();
         
+         Date todaysDate = new Date();
+         
+        Pedido pedido = new Pedido(1, listConta.get(1), listItem.get(0), 2, todaysDate, listFuncionario.get(0), listFuncionario.get(1));
+        PedidoDao pedidoDao = new PedidoDao();
+        pedidoDao.salvarPedido(pedido);
+        if(true){}
+        
+        List<Pedido> listPedido = new ArrayList();
+        PedidoDao pedidoDao = new PedidoDao();
+        listPedido = pedidoDao.abrirPedido();
+        if(true){}*/
     }
 }
