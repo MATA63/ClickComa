@@ -17,14 +17,14 @@ public class Mesa {
     /**
      * @return the idMesa
      */
-    public Integer getidMesa() {
+    public Integer getIdMesa() {
         return idMesa;
     }
 
     /**
      * @param idMesa the idMesa to set
      */
-    public void setidMesa(Integer id) {
+    public void setIdMesa(Integer idMesa) {
         this.idMesa = idMesa;
     }
 
@@ -45,14 +45,24 @@ public class Mesa {
     /**
      * @return the local
      */
-    public String getlocal() {
+    public String getLocal() {
         return local;
     }
 
     /**
      * @param local the local to set
      */
-    public void setlocal(String local) {
+    public void setLocal(String local) {
         this.local = local;
+    }
+    
+    public Mesa(){
+        
+    }
+    
+    public Mesa(Integer idMesa, Integer numero, String local){
+        setIdMesa(idMesa);
+        setNumero(numero);
+        setLocal(local);
     }
 }

@@ -44,5 +44,32 @@ public class Teste {
          ItemDao itemDao = new ItemDao();
          listItem = itemDao.abrirItem();
          if(true){}*/
+        
+        
+        //Teste Cardapio
+        /* List<Item> listItem = new ArrayList();
+         ItemDao itemDao = new ItemDao();
+         listItem = itemDao.abrirItem();
+        Cardapio cardapio = new Cardapio(listItem);
+        CardapioDao cardapioDao = new CardapioDao();
+        cardapioDao.salvarCardapio(cardapio);
+        if(true){}
+        
+         Cardapio cardapio = new Cardapio();
+         CardapioDao cardapioDao = new CardapioDao();
+         cardapio = cardapioDao.abrirCardapio();
+         if(true){}*/
+        
+        
+        //Teste Mesa::
+        /*Mesa mesa = new Mesa(3,3,"Ala 3");
+        MesaDao mesaDao = new MesaDao();
+        mesaDao.salvarMesa(mesa);
+         if(true){}
+         List<Mesa> listMesa = new ArrayList();
+         MesaDao mesaDao = new MesaDao();
+         listMesa = mesaDao.abrirMesa();
+         if(true){}*/
+        
     }
 }

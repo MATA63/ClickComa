@@ -8,22 +8,7 @@ package model;
 import java.util.List;
 
 public class Cardapio {
-    private Integer idCardapio;
     private List<Item> listItem;
-
-    /**
-     * @return the idCardapio
-     */
-    public Integer getIdCardapio() {
-        return idCardapio;
-    }
-
-    /**
-     * @param idCardapio the idCardapio to set
-     */
-    public void setIdCardapio(Integer idCardapio) {
-        this.idCardapio = idCardapio;
-    }
 
     /**
      * @return the listItem
@@ -37,6 +22,17 @@ public class Cardapio {
      */
     public void setListItem(List<Item> listItem) {
         this.listItem = listItem;
+    }
+    
+    /**
+     *
+     * @param listItem
+     */
+    public Cardapio(List<Item> listItem){
+        setListItem(listItem);
+    }
+    
+    public Cardapio() {
     }
 
 }

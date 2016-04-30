@@ -52,11 +52,11 @@ public class ItemDao {
             fr = new BufferedReader(new FileReader("Item.cc"));
 
             while ((linha = fr.readLine()) != null) {
-                idItem = Integer.getInteger(linha.substring(linha.indexOf("<idItem>")+8), linha.indexOf("<idTipo>"));
-                idTipo = Integer.getInteger(linha.substring(linha.indexOf("<idTipo>")+8), linha.indexOf("<nome>"));
-                nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<disponivel>"));
-                disponivel = Boolean.parseBoolean(linha.substring((linha.indexOf("<disponivel>")+12), linha.indexOf("<necessitaPreparo>")));
-                necessitaPreparo = Boolean.parseBoolean(linha.substring((linha.indexOf("<necessitaPreparo>")+18), linha.indexOf("<fdl>")));
+                idItem = Integer.parseInt(linha.substring(linha.indexOf("<idItem>")+8,linha.indexOf("<idTipo>")));
+                idTipo = Integer.parseInt(linha.substring(linha.indexOf("<idTipo>")+8, linha.indexOf("<nome>")));
+                nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<disponivel>"));
+                disponivel = Boolean.parseBoolean(linha.substring(linha.indexOf("<disponivel>")+12, linha.indexOf("<necessitaPreparo>")));
+                necessitaPreparo = Boolean.parseBoolean(linha.substring(linha.indexOf("<necessitaPreparo>")+18, linha.indexOf("<fdl>")));
                 
                 listItem.add(new Item(idItem, idTipo, nome, disponivel, necessitaPreparo));
             }
@@ -64,6 +64,6 @@ public class ItemDao {
             System.out.println("Ocorreu um erro ao ler o arquivo Item.cc. Exception: "+e.getMessage());
         }finally{
         }
-        return (List<Item>) listItem;
+        return listItem;
     }
 }

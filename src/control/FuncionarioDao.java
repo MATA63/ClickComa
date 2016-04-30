@@ -52,7 +52,7 @@ public class FuncionarioDao {
             fr = new BufferedReader(new FileReader("Funcionario.cc"));
 
             while ((linha = fr.readLine()) != null) {
-                idFuncionario = Integer.getInteger(linha.substring(linha.indexOf("<idFuncionario>")+15), linha.indexOf("<cpf>"));
+                idFuncionario = Integer.parseInt(linha.substring(linha.indexOf("<idFuncionario>")+15, linha.indexOf("<cpf>")));
                 cpf = linha.substring((linha.indexOf("<cpf>")+5), linha.indexOf("<numeroPis>"));
                 numeroPis = linha.substring((linha.indexOf("<numeroPis>")+11), linha.indexOf("<nome>"));
                 nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<cargo>"));

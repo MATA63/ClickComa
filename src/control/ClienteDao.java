@@ -36,8 +36,8 @@ public class ClienteDao {
             }catch(Exception e){ 
                 System.out.println("Ocorreu um erro ao salvar no arquivo Cliente.cc. Exception: "+e.getMessage());
             }finally{
-                System.out.println("Salvo com Sucesso!");
             }
+            System.out.println("Salvo com Sucesso!");
     }
 
     public List<Cliente> abrirCliente() throws IOException{
@@ -51,7 +51,7 @@ public class ClienteDao {
             fr = new BufferedReader(new FileReader("Cliente.cc"));
 
             while ((linha = fr.readLine()) != null) {
-                idCliente = Integer.getInteger(linha.substring(linha.indexOf("<idCliente>")+11), linha.indexOf("<nome>"));
+                idCliente =  Integer.parseInt(linha.substring(linha.indexOf("<idCliente>")+11, linha.indexOf("<nome>")));
                 nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<cpf>"));
                 cpf = linha.substring((linha.indexOf("<cpf>")+5), linha.indexOf("<email>"));
                 email = linha.substring((linha.indexOf("<email>")+7), linha.indexOf("<fdl>"));
