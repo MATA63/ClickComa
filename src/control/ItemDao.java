@@ -36,8 +36,8 @@ public class ItemDao {
         }catch(Exception e){ 
             System.out.println("Ocorreu um erro ao salvar no arquivo Item.cc. Exception: "+e.getMessage());
         }finally{
-            System.out.println("Salvo com Sucesso!");
         }
+        System.out.println("Salvo com Sucesso!");
     }
     
     public List<Item> abrirItem() throws IOException{

@@ -36,8 +36,8 @@ public class FuncionarioDao {
         }catch(Exception e){ 
             System.out.println("Ocorreu um erro ao salvar no arquivo Funcionario.cc. Exception: "+e.getMessage());
         }finally{
-            System.out.println("Salvo com Sucesso!");
         }
+        System.out.println("Salvo com Sucesso!");
     }
     
     public List<Funcionario> abrirFuncionario() throws IOException{

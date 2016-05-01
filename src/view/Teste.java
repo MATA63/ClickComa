@@ -132,6 +132,14 @@ public class Teste {
         List<Pedido> listPedido = new ArrayList();
         PedidoDao pedidoDao = new PedidoDao();
         listPedido = pedidoDao.abrirPedido();
+        if(true){}
+        Conta conta = new Conta();
+        conta.setIdConta(2);
+        Pedido pedido = new Pedido();
+        PedidoDao pedidoDao = new PedidoDao();
+        pedido = pedidoDao.abrirPedido(conta);
         if(true){}*/
+        
+        
     }
 }

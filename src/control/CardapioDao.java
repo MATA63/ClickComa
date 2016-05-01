@@ -46,8 +46,8 @@ public class CardapioDao {
         }catch(Exception e){ 
             System.out.println("Ocorreu um erro ao salvar no arquivo Cardapio.cc. Exception: "+e.getMessage());
         }finally{
-            System.out.println("Salvo com Sucesso!");
         }
+        System.out.println("Salvo com Sucesso!");
     }
     
     public Cardapio abrirCardapio() throws IOException{
