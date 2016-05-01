@@ -71,7 +71,7 @@ public class Cliente {
         this.email = email;
     }
     
-    public Cliente(Integer idCliente,String nome, String cpf, String email ){
+    public Cliente(Integer idCliente, String nome, String cpf, String email ){
             setIdCliente(idCliente);
             setNome(nome);
             setCpf(cpf);

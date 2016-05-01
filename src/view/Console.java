@@ -13,6 +13,7 @@ import control.*;
 import java.util.ArrayList;
 import java.util.List;
 import model.*;
+import view.*;
 
 /**
  *
@@ -21,28 +22,31 @@ import model.*;
 public class Console {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("   Selecione o módulo   ");
-        System.out.println("1. Cliente");
-        System.out.println("2. Funcionário");        
-        System.out.println("3. Gerente");
-        short menuPrincipal = scanner.nextShort();
-        
-        switch( menuPrincipal )
-        {
-            case 1:
+        int sair =0;
+        do{
+            //for(short i=0; i<20; i++) System.out.println("\n");
+            System.out.println("   Selecione o módulo   ");
+            System.out.println("1. Cliente");
+            System.out.println("2. Funcionário");        
+            System.out.println("3. Gerente");
+            String menuPrincipal = scanner.nextLine();
+            scanner.reset();
+            switch( menuPrincipal )
+            {
+                case "1": 
                     clienteCardapio();
                     break;
-            case 2:
-                    //comandos caso a opção 2 tenha sido escolhida
-                    break;
-            case 3:
-                    //comandos caso a opção 3 tenha sido escolhida
-                    break;
-            default:
-                    //comandos caso nenhuma das opções anteriores tenha sido escolhida
-        }
+                case "2": 
+                    ManterCliente manterCliente = new ManterCliente();
+                    manterCliente.console_load();
+                        break;
+                case "3":
+                        //comandos caso a opção 3 tenha sido escolhida
+                        break;
+                default: sair = -1;
+            }
         
-        
+        }while(sair == 0);
     }
     
     public static void clienteCardapio() throws IOException{
@@ -51,12 +55,13 @@ public class Console {
         CardapioDao cardapioDao = new CardapioDao();
         cardapio = cardapioDao.abrirCardapio();
         
+        //for(short i=0; i<20; i++) System.out.println("\n"); //limpar tela (bizarro, mas não achei coisa melhor).
         System.out.println("   Cardápio   ");
         for(Item item: cardapio.getListItem()){
             System.out.printf("%d. %s ..... R$ %.2f\n",item.getIdItem(), item.getNome(), item.getValor());
         }
         short menuCardapio = scanner.nextShort();
+        scanner.nextLine();
     }
-    
-    
+
 }

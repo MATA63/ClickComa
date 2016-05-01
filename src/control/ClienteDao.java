@@ -7,6 +7,7 @@ package control;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,22 +25,47 @@ public class ClienteDao {
     private BufferedReader fr = null;
 
     public void salvarCliente(Cliente cliente) throws IOException{
-            try{
-                    bw = new BufferedWriter(new FileWriter("Cliente.cc", true));  
-                    bw.write("<idCliente>"+cliente.getIdCliente().toString()
-                                +"<nome>"+cliente.getNome()
-                                +"<cpf>"+cliente.getCpf()
-                                +"<email>"+cliente.getEmail()+"<fdl>");
-                    bw.newLine();
-                    bw.flush();
-                    bw.close();    
-            }catch(Exception e){ 
-                System.out.println("Ocorreu um erro ao salvar no arquivo Cliente.cc. Exception: "+e.getMessage());
-            }finally{
-            }
-            System.out.println("Salvo com Sucesso!");
+        try{
+            bw = new BufferedWriter(new FileWriter("Cliente.cc", true));  
+            bw.write("<idCliente>"+cliente.getIdCliente().toString()
+                        +"<nome>"+cliente.getNome()
+                        +"<cpf>"+cliente.getCpf()
+                        +"<email>"+cliente.getEmail()+"<fdl>");
+            bw.newLine();
+            bw.flush();
+            bw.close();    
+        }catch(Exception e){ 
+            System.out.println("Ocorreu um erro ao salvar no arquivo Cliente.cc. Exception: "+e.getMessage());
+        }finally{
+        }
+        System.out.println("Salvo com Sucesso!");
     }
 
+    public void salvarCliente(List<Cliente> listCliente) throws IOException{
+        try{
+            
+            //Sobrescrever todos Clientes.
+            File file = new File("Cliente.cc");
+            if ( file.exists()) {
+                FileWriter fw = new FileWriter("Cliente.cc",false);
+            }
+            bw = new BufferedWriter(new FileWriter("Cliente.cc", true)); 
+            for(Cliente cliente: listCliente){
+                bw.write("<idCliente>"+cliente.getIdCliente().toString()
+                    +"<nome>"+cliente.getNome()
+                    +"<cpf>"+cliente.getCpf()
+                    +"<email>"+cliente.getEmail()+"<fdl>");
+                bw.newLine();
+                bw.flush();
+            }
+            bw.close();    
+        }catch(Exception e){ 
+            System.out.println("Ocorreu um erro ao salvar no arquivo Cliente.cc. Exception: "+e.getMessage());
+        }finally{
+        }
+        System.out.println("Salvo com Sucesso!");
+    }
+    
     public List<Cliente> abrirCliente() throws IOException{
         List<Cliente> listCliente = new ArrayList();
         try{
@@ -65,7 +91,7 @@ public class ClienteDao {
         return listCliente;
     }
     
-        public Cliente abrirCliente(Integer idClienteProcurado) throws IOException{
+    public Cliente abrirCliente(Integer idClienteProcurado) throws IOException{
         try{
             String linha;
             Integer idCliente;
@@ -79,7 +105,7 @@ public class ClienteDao {
                 nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<cpf>"));
                 cpf = linha.substring((linha.indexOf("<cpf>")+5), linha.indexOf("<email>"));
                 email = linha.substring((linha.indexOf("<email>")+7), linha.indexOf("<fdl>"));
-                
+
                 if(idClienteProcurado == idCliente){
                     Cliente clienteProcurado = new Cliente(idCliente, nome, cpf, email);
                     return clienteProcurado;
@@ -91,5 +117,19 @@ public class ClienteDao {
         }
         return null;
     }
+    
+    public Integer maiorIdCliente() throws IOException{
+        Integer maiorIdCliente=0;
+        List<Cliente> listCliente = new ArrayList();
+        listCliente = abrirCliente();
+        
+        for(Cliente cliente: listCliente){
+            if( maiorIdCliente < cliente.getIdCliente()){
+                maiorIdCliente = cliente.getIdCliente();
+            }
+        }
+        return maiorIdCliente;
+    }
+    
     
 }

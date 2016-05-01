@@ -30,16 +30,17 @@ public class Teste {
         cliente = clienteDao.abrirCliente(2);
         if(true){};
         
-        Cliente cliente = new Cliente(3,"3","3333","333@zaroi.com");
+        Cliente cliente = new Cliente("novoNome","123456798","333@zaroi.com");
         ClienteDao clienteDao = new ClienteDao();
-        clienteDao.salvarCliente(cliente);
-         List<Cliente> listCliente = new ArrayList();
+        clienteDao.salvarCliente(cliente);*/
+        
+        /* List<Cliente> listCliente = new ArrayList();
          ClienteDao clienteDao = new ClienteDao();
          listCliente = clienteDao.abrirCliente();
-         if(true){}*/
+         if(true){}
         
         //Teste Funcionario
-        /*Funcionario funcionario = new Funcionario(2,"2","22","222","2222");
+        Funcionario funcionario = new Funcionario(2,"2","22","222","2222");
         FuncionarioDao funcionarioDao = new FuncionarioDao();
         funcionarioDao.salvarFuncionario(funcionario);
          List<Funcionario> listFuncionario = new ArrayList();
