@@ -1,9 +1,11 @@
+package view;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+
 import control.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -20,7 +22,7 @@ import java.util.Date;
  * @author iandrade
  */
 public class Teste {
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main2(String[] args) throws IOException, ParseException {
        
         //Teste cliente::
         /*Cliente cliente = new Cliente();
@@ -46,7 +48,7 @@ public class Teste {
          if(true){}*/
         
         //Teste Item
-        /*Item item = new Item(3,3,"33",true,false);
+        /*Item item = new Item(6,3,"nome",99.99f,true,false);
         ItemDao itemDao = new ItemDao();
         itemDao.salvarItem(item);
          List<Item> listItem = new ArrayList();

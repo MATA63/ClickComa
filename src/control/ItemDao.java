@@ -28,6 +28,7 @@ public class ItemDao {
                 bw.write("<idItem>"+item.getIdItem().toString()
                             +"<idTipo>"+item.getIdTipo()
                             +"<nome>"+item.getNome()
+                            +"<valor>"+item.getValor()
                             +"<disponivel>"+item.getDisponivel().toString()
                             +"<necessitaPreparo>"+item.getNecessitaPreparo().toString()+"<fdl>");
                 bw.newLine();
@@ -47,6 +48,7 @@ public class ItemDao {
             Integer idItem;
             Integer idTipo;
             String nome;
+            float valor;
             Boolean disponivel;
             Boolean necessitaPreparo;
             fr = new BufferedReader(new FileReader("Item.cc"));
@@ -54,11 +56,12 @@ public class ItemDao {
             while ((linha = fr.readLine()) != null) {
                 idItem = Integer.parseInt(linha.substring(linha.indexOf("<idItem>")+8,linha.indexOf("<idTipo>")));
                 idTipo = Integer.parseInt(linha.substring(linha.indexOf("<idTipo>")+8, linha.indexOf("<nome>")));
-                nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<disponivel>"));
+                nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<valor>"));
+                valor = Float.parseFloat(linha.substring(linha.indexOf("<valor>")+7, linha.indexOf("<disponivel>")));
                 disponivel = Boolean.parseBoolean(linha.substring(linha.indexOf("<disponivel>")+12, linha.indexOf("<necessitaPreparo>")));
                 necessitaPreparo = Boolean.parseBoolean(linha.substring(linha.indexOf("<necessitaPreparo>")+18, linha.indexOf("<fdl>")));
                 
-                listItem.add(new Item(idItem, idTipo, nome, disponivel, necessitaPreparo));
+                listItem.add(new Item(idItem, idTipo, nome, valor, disponivel, necessitaPreparo));
             }
         }catch(Exception e){ 
             System.out.println("Ocorreu um erro ao ler o arquivo Item.cc. Exception: "+e.getMessage());
@@ -73,6 +76,7 @@ public class ItemDao {
         Integer idItem;
         Integer idTipo;
         String nome;
+        float valor;
         Boolean disponivel;
         Boolean necessitaPreparo;
         fr = new BufferedReader(new FileReader("Item.cc"));
@@ -81,11 +85,12 @@ public class ItemDao {
             idItem = Integer.parseInt(linha.substring(linha.indexOf("<idItem>")+8,linha.indexOf("<idTipo>")));
             idTipo = Integer.parseInt(linha.substring(linha.indexOf("<idTipo>")+8, linha.indexOf("<nome>")));
             nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<disponivel>"));
+            valor = Float.parseFloat(linha.substring(linha.indexOf("<valor>")+7, linha.indexOf("<disponivel>")));
             disponivel = Boolean.parseBoolean(linha.substring(linha.indexOf("<disponivel>")+12, linha.indexOf("<necessitaPreparo>")));
             necessitaPreparo = Boolean.parseBoolean(linha.substring(linha.indexOf("<necessitaPreparo>")+18, linha.indexOf("<fdl>")));
 
             if (idItemProcurado == idItem){
-                Item item = new Item(idItem, idTipo, nome, disponivel, necessitaPreparo);
+                Item item = new Item(idItem, idTipo, nome, valor, disponivel, necessitaPreparo);
                 return item;
             }
         }

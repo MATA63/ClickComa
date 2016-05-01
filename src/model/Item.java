@@ -13,6 +13,7 @@ public class Item {
     private Integer idItem;
     private Integer idTipo;
     private String nome;
+    private float valor;
     private Boolean disponivel;
     private Boolean necessitaPreparo;
 
@@ -59,6 +60,20 @@ public class Item {
     }
 
     /**
+     * @return the valor
+     */
+    public float getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+    
+    /**
      * @return the disponivel
      */
     public Boolean getDisponivel() {
@@ -86,10 +101,11 @@ public class Item {
         this.necessitaPreparo = necessitaPreparo;
     }
     
-    public Item(Integer idItem, Integer idTipo, String nome, Boolean disponivel, Boolean necessitaPreparo ){
+    public Item(Integer idItem, Integer idTipo, String nome, float valor, Boolean disponivel, Boolean necessitaPreparo ){
         setIdItem(idItem);
         setIdTipo(idTipo);
         setNome(nome);
+        setValor(valor);
         setDisponivel(disponivel);
         setNecessitaPreparo(necessitaPreparo);        
     }
@@ -97,4 +113,6 @@ public class Item {
     public Item(){
         
     }
+
+
 }
