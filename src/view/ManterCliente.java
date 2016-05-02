@@ -52,6 +52,7 @@ public class ManterCliente {
         }while(sair == 0);
     
     }
+    
     public void clienteAdicionar() throws IOException{
         ClienteDao clienteDao = new ClienteDao();
         Cliente cliente = new Cliente();
@@ -72,52 +73,31 @@ public class ManterCliente {
     public void clienteAlterar() throws IOException{
         ClienteDao clienteDao = new ClienteDao();
         Cliente cliente = new Cliente();
+        List<Cliente> listCliente = new ArrayList();
         
         clienteExibir();
-        System.out.println("   Qual cliente:   ");
+        System.out.print("Qual cliente:   ");
         menuClienteInt = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println(menuClienteInt);
-        cliente = clienteDao.abrirCliente(menuClienteInt);
+        scanner.reset();
+
         ////for(short i=0; i<20; i++) System.out.println("\n");
-        System.out.printf("%d. %s  |  %s  |  %s\n", 
-                            cliente.getIdCliente(), cliente.getNome(), cliente.getCpf(), cliente.getEmail());
         System.out.println("   O que deseja alterar?   ");
         System.out.println("1. Nome");
         System.out.println("2. CPF");
         System.out.println("3. e-mail");
-        System.out.println("5. Retornar Menu Anterior");
         System.out.print("Opção: ");
-        
         Integer menuAlterar = scanner.nextInt();
         scanner.reset();
-        for(Cliente clienteBusca: listCliente){
-            if(clienteBusca.getIdCliente() == menuClienteInt){
-                cliente = clienteBusca;
-            }
+        
+        System.out.print("Alterar por: ");
+        String novoAtributoCliente = scanner.next();
+        scanner.reset();
+        
+        if (clienteDao.alterarCliente(menuClienteInt, menuAlterar, novoAtributoCliente) != null){
+                System.out.println("Alterado com Sucesso!");
+            }else{
+                System.out.println("Erro ao Alterar");
         }
-        scanner.nextLine();
-        switch( menuClienteInt )
-        {
-            case 1: 
-                System.out.print("Novo Nome: ");
-                String novoNome = scanner.nextLine();
-                System.out.println(novoNome);
-                scanner.reset();
-                listCliente.get(listCliente.indexOf(cliente)).setNome(novoNome);
-                
-                break;
-            case 2:
-                System.out.println("Novo CPF: ");
-                listCliente.get(listCliente.indexOf(cliente)).setCpf(scanner.next());
-                break;
-            case 3:
-                System.out.println("Novo e-mail: ");
-                listCliente.get(listCliente.indexOf(cliente)).setEmail(scanner.next());
-                break;
-            default:
-        }
-        clienteDao.salvarCliente(listCliente);                
     }
     
     public void clienteExibir() throws IOException{
@@ -126,22 +106,23 @@ public class ManterCliente {
         System.out.println("   Clientes");
         for(Cliente cliente: listCliente){
             System.out.printf("%d. %s  |  %s  |  %s\n", 
-                    cliente.getIdCliente(), cliente.getNome(), cliente.getCpf(), cliente.getEmail());
+                    cliente.getIdCliente(), cliente.getNome(), 
+                    cliente.getCpf(), cliente.getEmail());
         }
     }
    
     public void clienteExcluir() throws IOException{
         ClienteDao clienteDao = new ClienteDao();
-        Cliente cliente = new Cliente();
         clienteExibir();
         
-        System.out.println("   Qual cliente:   ");
-        menuClienteString = scanner.next();
+        System.out.print("Qual cliente:   ");
+        Integer menuClienteDeleteInt = scanner.nextInt();
         
-        cliente = clienteDao.abrirCliente(menuClienteInt);
-        listCliente.remove(cliente);
-        
-        clienteDao.salvarCliente(listCliente);  
+        if(clienteDao.excluirCliente(menuClienteDeleteInt) != null){
+            System.out.println("Excluído com Sucesso!");
+        }else{
+            System.out.println("Erro ao excluir");
+        }
     }
-    
+
 }

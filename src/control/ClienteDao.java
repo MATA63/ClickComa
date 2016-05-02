@@ -43,7 +43,6 @@ public class ClienteDao {
 
     public void salvarCliente(List<Cliente> listCliente) throws IOException{
         try{
-            
             //Sobrescrever todos Clientes.
             File file = new File("Cliente.cc");
             if ( file.exists()) {
@@ -123,13 +122,52 @@ public class ClienteDao {
         List<Cliente> listCliente = new ArrayList();
         listCliente = abrirCliente();
         
-        for(Cliente cliente: listCliente){
-            if( maiorIdCliente < cliente.getIdCliente()){
-                maiorIdCliente = cliente.getIdCliente();
+        if(listCliente.size() > 0){
+            for(Cliente cliente: listCliente){
+                if( maiorIdCliente < cliente.getIdCliente()){
+                    maiorIdCliente = cliente.getIdCliente();
+                }
             }
+            return maiorIdCliente;
+        }else{
+            return 0;
         }
-        return maiorIdCliente;
     }
     
-    
+    public List<Cliente> excluirCliente(Integer idClienteExcluir) throws IOException{
+        List<Cliente> listCliente = new ArrayList();
+        listCliente = abrirCliente();
+        for(Cliente cliente: listCliente){
+            if( idClienteExcluir == cliente.getIdCliente()){
+                listCliente.remove(cliente);
+                salvarCliente(listCliente);
+                return listCliente;
+            }
+        }
+        return null;
+    }
+
+    public List<Cliente> alterarCliente(Integer idClienteAlterar, Integer numAtributoAlterar, String novoAtributo) throws IOException{
+        List<Cliente> listCliente = new ArrayList();
+        listCliente = abrirCliente();
+        
+        for(Cliente cliente: listCliente){
+            if( idClienteAlterar == cliente.getIdCliente()){
+                switch( numAtributoAlterar )
+                {
+                    case 1: cliente.setNome(novoAtributo);
+                        break;
+                    case 2: cliente.setCpf(novoAtributo);
+                        break;
+                    case 3: cliente.setEmail(novoAtributo);
+                        break;
+                    default: System.out.println("Erro ao escolher o atributo.");
+                }
+                salvarCliente(listCliente);
+                return listCliente;
+            }
+        }
+        return null;
+    }
+
 }

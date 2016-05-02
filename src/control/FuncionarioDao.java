@@ -7,6 +7,7 @@ package control;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,6 +41,32 @@ public class FuncionarioDao {
         System.out.println("Salvo com Sucesso!");
     }
     
+    public void salvarFuncionario(List<Funcionario> listFuncionario) throws IOException{
+    try{
+
+        //Sobrescrever todos Funcionarios.
+        File file = new File("Funcionario.cc");
+        if ( file.exists()) {
+            FileWriter fw = new FileWriter("Funcionario.cc",false);
+        }
+        bw = new BufferedWriter(new FileWriter("Funcionario.cc", true)); 
+        for(Funcionario funcionario: listFuncionario){
+            bw.write("<idFuncionario>"+funcionario.getIdFuncionario().toString()
+                        +"<cpf>"+funcionario.getCpf()
+                        +"<numeroCtps>"+funcionario.getNumeroCtps()
+                        +"<nome>"+funcionario.getNome()
+                        +"<cargo>"+funcionario.getCargo()+"<fdl>");
+            bw.newLine();
+            bw.flush();
+        }
+        bw.close();    
+    }catch(Exception e){ 
+        System.out.println("Ocorreu um erro ao salvar no arquivo Funcionario.cc. Exception: "+e.getMessage());
+    }finally{
+    }
+    System.out.println("Salvo com Sucesso!");
+}
+
     public List<Funcionario> abrirFuncionario() throws IOException{
         List<Funcionario> listFuncionario = new ArrayList();
         try{
@@ -95,5 +122,60 @@ public class FuncionarioDao {
     }
     return null;
     }
-    
+
+    public Integer maiorIdFuncionario() throws IOException{
+        Integer maiorIdFuncionario=0;
+        List<Funcionario> listFuncionario = new ArrayList();
+        listFuncionario = abrirFuncionario();
+        
+        if(listFuncionario.size() > 0){
+            for(Funcionario funcionario: listFuncionario){
+                if( maiorIdFuncionario < funcionario.getIdFuncionario()){
+                    maiorIdFuncionario = funcionario.getIdFuncionario();
+                }
+            }
+            return maiorIdFuncionario;
+        }else{
+            return 0;
+        }
+    }
+
+    public List<Funcionario> excluirFuncionario(Integer idFuncionarioExcluir) throws IOException{
+    List<Funcionario> listFuncionario = new ArrayList();
+    listFuncionario = abrirFuncionario();
+    for(Funcionario funcionario: listFuncionario){
+        if( idFuncionarioExcluir == funcionario.getIdFuncionario()){
+            listFuncionario.remove(funcionario);
+            salvarFuncionario(listFuncionario);
+            return listFuncionario;
+        }
+    }
+    return null;
+    }
+
+    public List<Funcionario> alterarFuncionario(Integer idFuncionarioAlterar, Integer numAtributoAlterar, String novoAtributo) throws IOException{
+        List<Funcionario> listFuncionario = new ArrayList();
+        listFuncionario = abrirFuncionario();
+        
+        for(Funcionario funcionario: listFuncionario){
+            if( idFuncionarioAlterar == funcionario.getIdFuncionario()){
+                switch( numAtributoAlterar )
+                {
+                    case 1: funcionario.setCpf(novoAtributo);
+                        break;
+                    case 2: funcionario.setNumeroCtps(novoAtributo);
+                        break;
+                    case 3: funcionario.setNome(novoAtributo);
+                        break;
+                    case 4: funcionario.setCargo(novoAtributo);
+                        break;
+                    default: System.out.println("Erro ao escolher o atributo.");
+                }
+                salvarFuncionario(listFuncionario);
+                return listFuncionario;
+            }
+        }
+        return null;
+    }
+
 }

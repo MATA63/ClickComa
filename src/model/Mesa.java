@@ -11,7 +11,7 @@ package model;
  */
 public class Mesa {
     private Integer idMesa;
-    private Integer numero;
+    private String numero;
     private String local;
 
     /**
@@ -31,14 +31,14 @@ public class Mesa {
     /**
      * @return the numero
      */
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
     /**
      * @param numero the numero to set
      */
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -60,7 +60,7 @@ public class Mesa {
         
     }
     
-    public Mesa(Integer idMesa, Integer numero, String local){
+    public Mesa(Integer idMesa, String numero, String local){
         setIdMesa(idMesa);
         setNumero(numero);
         setLocal(local);

@@ -25,10 +25,12 @@ public class Console {
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
-            System.out.println("   Selecione o módulo   ");
+            System.out.println("   Selecione o módulo  [Organizar depois o Menu] ");
             System.out.println("1. Cliente");
-            System.out.println("2. Funcionário");        
-            System.out.println("3. Gerente");
+            System.out.println("2. Funcionário- ManterCliente");        
+            System.out.println("3. Gerente- ManterFuncionario");
+            System.out.println("4. Gerente- ManterMesa");
+            System.out.println("5. Funcionario- ManterItem");
             String menuPrincipal = scanner.nextLine();
             scanner.reset();
             switch( menuPrincipal )
@@ -39,10 +41,19 @@ public class Console {
                 case "2": 
                     ManterCliente manterCliente = new ManterCliente();
                     manterCliente.console_load();
-                        break;
+                    break;
                 case "3":
-                        //comandos caso a opção 3 tenha sido escolhida
-                        break;
+                    ManterFuncionario manterFuncionario = new ManterFuncionario();
+                    manterFuncionario.console_load();
+                    break;
+                case "4":
+                    ManterMesa manterMesa = new ManterMesa();
+                    manterMesa.console_load();
+                    break;
+                case "5":
+                    ManterItem manterItem = new ManterItem();
+                    manterItem.console_load();
+                    break;
                 default: sair = -1;
             }
         

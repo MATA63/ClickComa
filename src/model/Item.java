@@ -10,8 +10,8 @@ package model;
  * @author Igor
  */
 public class Item {
+
     private Integer idItem;
-    private Integer idTipo;
     private String nome;
     private float valor;
     private Boolean disponivel;
@@ -29,20 +29,6 @@ public class Item {
      */
     public void setIdItem(Integer idItem) {
         this.idItem = idItem;
-    }
-
-    /**
-     * @return the idTipo
-     */
-    public Integer getIdTipo() {
-        return idTipo;
-    }
-
-    /**
-     * @param idTipo the idTipo to set
-     */
-    public void setIdTipo(Integer idTipo) {
-        this.idTipo = idTipo;
     }
 
     /**
@@ -72,7 +58,7 @@ public class Item {
     public void setValor(float valor) {
         this.valor = valor;
     }
-    
+
     /**
      * @return the disponivel
      */
@@ -100,19 +86,16 @@ public class Item {
     public void setNecessitaPreparo(Boolean necessitaPreparo) {
         this.necessitaPreparo = necessitaPreparo;
     }
-    
-    public Item(Integer idItem, Integer idTipo, String nome, float valor, Boolean disponivel, Boolean necessitaPreparo ){
+
+    public Item(Integer idItem, String nome, float valor, Boolean disponivel, Boolean necessitaPreparo) {
         setIdItem(idItem);
-        setIdTipo(idTipo);
         setNome(nome);
         setValor(valor);
         setDisponivel(disponivel);
-        setNecessitaPreparo(necessitaPreparo);        
-    }
-    
-    public Item(){
-        
+        setNecessitaPreparo(necessitaPreparo);
     }
 
+    public Item() {
 
+    }
 }
