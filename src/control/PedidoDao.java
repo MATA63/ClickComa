@@ -73,8 +73,43 @@ public class PedidoDao {
         return listPedido;
     }
     
-    public Pedido abrirPedido(Conta contaPesquisada) throws IOException{
+//    public Pedido abrirPedido(Conta contaPesquisada) throws IOException{
+//        try{
+//            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+//            String linha;
+//            Integer idPedido;
+//            Conta conta = new Conta();
+//            Item item = new Item();
+//            Integer quantidade;
+//            Date dataHora;
+//            Funcionario garcom = new Funcionario();
+//            Funcionario cozinheiro = new Funcionario();
+//            fr = new BufferedReader(new FileReader("Pedido.cc"));
+//
+//            while ((linha = fr.readLine()) != null) {
+//                idPedido =  Integer.parseInt(linha.substring(linha.indexOf("<idPedido>")+10, linha.indexOf("<conta>")));
+//                conta.setIdConta(Integer.parseInt(linha.substring(linha.indexOf("<conta>")+7, linha.indexOf("<item>"))));
+//                item.setIdItem(Integer.parseInt(linha.substring(linha.indexOf("<item>")+6, linha.indexOf("<quantidade>"))));
+//                quantidade = Integer.parseInt(linha.substring(linha.indexOf("<quantidade>")+12, linha.indexOf("<dataHora>")));
+//                dataHora = formatter.parse(linha.substring(linha.indexOf("<dataHora>")+10, linha.indexOf("<garcom>")));
+//                garcom.setIdFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<garcom>")+8, linha.indexOf("<cozinheiro>"))));
+//                cozinheiro.setIdFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<cozinheiro>")+12, linha.indexOf("<fdl>"))));
+//
+//                if (contaPesquisada.getIdConta() == conta.getIdConta()){
+//                    Pedido pedido = new Pedido(idPedido, contaPesquisada, item, quantidade, dataHora, garcom, cozinheiro);
+//                    return pedido;
+//                }
+//            }
+//        }catch(Exception e){ 
+//            System.out.println("Ocorreu um erro ao ler o arquivo Pedido.cc. Exception: "+e.getMessage());
+//        }finally{
+//        }
+//        return null;
+//    }
+    
+    public List<Pedido> abrirPedido(Conta contaPesquisada) throws IOException{
     try{
+        List<Pedido> listPedido = new ArrayList();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         String linha;
         Integer idPedido;
@@ -96,16 +131,15 @@ public class PedidoDao {
             cozinheiro.setIdFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<cozinheiro>")+12, linha.indexOf("<fdl>"))));
             
             if (contaPesquisada.getIdConta() == conta.getIdConta()){
-                Pedido pedido = new Pedido(idPedido, contaPesquisada, item, quantidade, dataHora, garcom, cozinheiro);
-                return pedido;
+                listPedido.add(new Pedido(idPedido, contaPesquisada, item, quantidade, dataHora, garcom, cozinheiro));
             }
         }
+        return listPedido;
     }catch(Exception e){ 
         System.out.println("Ocorreu um erro ao ler o arquivo Pedido.cc. Exception: "+e.getMessage());
     }finally{
     }
     return null;
     }
-    
     
 }
