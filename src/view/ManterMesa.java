@@ -17,11 +17,10 @@ import model.*;
  * @author Igor
  */
 public class ManterMesa {
-    private Scanner scanner = new Scanner(System.in);
-    private Integer menuMesaInt = scanner.nextInt();
-    private String menuMesaString = scanner.next();
     private List<Mesa> listMesa = new ArrayList();
     public void console_load() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        String menuMesaString;
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
@@ -52,6 +51,7 @@ public class ManterMesa {
     }
     
     public void mesaAdicionar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         MesaDao mesaDao = new MesaDao();
         Mesa mesa = new Mesa();
         
@@ -67,8 +67,9 @@ public class ManterMesa {
     }
    
     public void mesaAlterar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        Integer menuMesaInt = scanner.nextInt();
         MesaDao mesaDao = new MesaDao();
-        Mesa mesa = new Mesa();
         List<Mesa> listMesa = new ArrayList();
         
         mesaExibir();
@@ -106,6 +107,7 @@ public class ManterMesa {
     }
    
     public void mesaExcluir() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         MesaDao mesaDao = new MesaDao();
         mesaExibir();
         

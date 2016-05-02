@@ -21,7 +21,6 @@ import view.*;
  */
 public class Console {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
@@ -31,8 +30,9 @@ public class Console {
             System.out.println("3. Gerente- ManterFuncionario");
             System.out.println("4. Gerente- ManterMesa");
             System.out.println("5. Funcionario- ManterItem");
+            System.out.println("6. Sair");
+            Scanner scanner = new Scanner(System.in);
             String menuPrincipal = scanner.nextLine();
-            scanner.reset();
             switch( menuPrincipal )
             {
                 case "1": 

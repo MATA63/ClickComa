@@ -17,11 +17,10 @@ import model.*;
  * @author Igor
  */
 public class ManterFuncionario {
-    private Scanner scanner = new Scanner(System.in);
-    private Integer menuFuncionarioInt = scanner.nextInt();
-    private String menuFuncionarioString = scanner.next();
     private List<Funcionario> listFuncionario = new ArrayList();
     public void console_load() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        String menuFuncionarioString;
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
@@ -52,6 +51,7 @@ public class ManterFuncionario {
     }
     
     public void funcionarioAdicionar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         FuncionarioDao funcionarioDao = new FuncionarioDao();
         Funcionario funcionario = new Funcionario();
         
@@ -71,8 +71,9 @@ public class ManterFuncionario {
     }
     
     public void funcionarioAlterar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        Integer menuFuncionarioInt = scanner.nextInt();
         FuncionarioDao funcionarioDao = new FuncionarioDao();
-        Funcionario funcionario = new Funcionario();
         List<Funcionario> listFuncionario = new ArrayList();
         
         funcionarioExibir();
@@ -114,6 +115,7 @@ public class ManterFuncionario {
     }
    
     public void funcionarioExcluir() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         FuncionarioDao funcionarioDao = new FuncionarioDao();
         funcionarioExibir();
         

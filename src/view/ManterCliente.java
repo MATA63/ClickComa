@@ -19,11 +19,10 @@ import java.util.Scanner;
  * @author Igor
  */
 public class ManterCliente {
-    private Scanner scanner = new Scanner(System.in);
-    private Integer menuClienteInt = scanner.nextInt();
-    private String menuClienteString = scanner.next();
     private List<Cliente> listCliente = new ArrayList();
     public void console_load() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        String menuClienteString;
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
@@ -54,6 +53,7 @@ public class ManterCliente {
     }
     
     public void clienteAdicionar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         ClienteDao clienteDao = new ClienteDao();
         Cliente cliente = new Cliente();
         
@@ -71,6 +71,8 @@ public class ManterCliente {
     }
     
     public void clienteAlterar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        Integer menuClienteInt = scanner.nextInt();
         ClienteDao clienteDao = new ClienteDao();
         Cliente cliente = new Cliente();
         List<Cliente> listCliente = new ArrayList();
@@ -112,6 +114,7 @@ public class ManterCliente {
     }
    
     public void clienteExcluir() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         ClienteDao clienteDao = new ClienteDao();
         clienteExibir();
         

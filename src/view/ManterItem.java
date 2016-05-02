@@ -17,11 +17,11 @@ import model.*;
  * @author Igor
  */
 public class ManterItem {
-    private Scanner scanner = new Scanner(System.in);
-    private Integer menuItemInt = scanner.nextInt();
-    private String menuItemString = scanner.next();
+   
     private List<Item> listItem = new ArrayList();
     public void console_load() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        String menuItemString;
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
@@ -52,6 +52,7 @@ public class ManterItem {
     }
     
     public void itemAdicionar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         ItemDao itemDao = new ItemDao();
         Item item = new Item();
         
@@ -84,6 +85,8 @@ public class ManterItem {
     }
     
     public void itemAlterar() throws IOException{
+        Scanner scanner = new Scanner(System.in);
+        Integer menuItemInt = scanner.nextInt();
         ItemDao itemDao = new ItemDao();
         Item item = new Item();
         List<Item> listItem = new ArrayList();
@@ -124,6 +127,7 @@ public class ManterItem {
     }
    
     public void itemExcluir() throws IOException{
+        Scanner scanner = new Scanner(System.in);
         ItemDao itemDao = new ItemDao();
         itemExibir();
         
