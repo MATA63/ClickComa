@@ -16,7 +16,7 @@ import model.*;
  *
  * @author Igor
  */
-public class ManterMesa {
+public class ManterMesaView {
     private List<Mesa> listMesa = new ArrayList();
     public void console_load() throws IOException{
         Scanner scanner = new Scanner(System.in);

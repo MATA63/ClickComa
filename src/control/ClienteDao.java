@@ -117,6 +117,33 @@ public class ClienteDao {
         return null;
     }
     
+    public Cliente abrirCliente(String cpfProcurado) throws IOException{
+        try{
+            String linha;
+            Integer idCliente;
+            String nome;
+            String cpf;
+            String email;
+            fr = new BufferedReader(new FileReader("Cliente.cc"));
+
+            while ((linha = fr.readLine()) != null) {
+                idCliente =  Integer.parseInt(linha.substring(linha.indexOf("<idCliente>")+11, linha.indexOf("<nome>")));
+                nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<cpf>"));
+                cpf = linha.substring((linha.indexOf("<cpf>")+5), linha.indexOf("<email>"));
+                email = linha.substring((linha.indexOf("<email>")+7), linha.indexOf("<fdl>"));
+
+                if(cpfProcurado.equals(cpf)){
+                    Cliente clienteProcurado = new Cliente(idCliente, nome, cpf, email);
+                    return clienteProcurado;
+                }
+            }
+        }catch(Exception e){ 
+            System.out.println("Ocorreu um erro ao ler o arquivo Cliente.cc. Exception: "+e.getMessage());
+        }finally{
+        }
+        return null;
+    }
+     
     public Integer maiorIdCliente() throws IOException{
         Integer maiorIdCliente=0;
         List<Cliente> listCliente = new ArrayList();

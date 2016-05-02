@@ -21,8 +21,8 @@ import java.util.Date;
  *
  * @author iandrade
  */
-public class Teste {
-    public static void main2(String[] args) throws IOException, ParseException {
+public class TesteView {
+    public static void main(String[] args) throws IOException, ParseException {
        
         //Teste cliente::
         /*Cliente cliente = new Cliente();
@@ -105,14 +105,14 @@ public class Teste {
          List<Conta> listConta = new ArrayList();
          ContaDao contaDao = new ContaDao();
          listConta = contaDao.abrirConta();
-         if(true){}
+         if(true){}*/
          
-        Conta conta = new Conta();
+        /*Conta conta = new Conta();
         ContaDao contaDao = new ContaDao();
         conta = contaDao.abrirConta(1);
-         if(true){}*/
+         if(true){}
         
-        //Teste Pedido
+        //Teste Pedido*/
         /* List<Conta> listConta = new ArrayList();
          ContaDao contaDao = new ContaDao();
          listConta = contaDao.abrirConta();

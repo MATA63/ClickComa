@@ -18,7 +18,7 @@ import java.util.Scanner;
  *
  * @author Igor
  */
-public class ManterCliente {
+public class ManterClienteView {
     private List<Cliente> listCliente = new ArrayList();
     public void console_load() throws IOException{
         Scanner scanner = new Scanner(System.in);

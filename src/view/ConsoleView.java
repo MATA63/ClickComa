@@ -19,8 +19,8 @@ import view.*;
  *
  * @author Igor
  */
-public class Console {
-    public static void main(String[] args) throws IOException {
+public class ConsoleView {
+    public static void main2(String[] args) throws IOException {
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
@@ -36,22 +36,24 @@ public class Console {
             switch( menuPrincipal )
             {
                 case "1": 
-                    clienteCardapio();
+                    CardapioView cardapio = new CardapioView();
+                    cardapio.console_load();
+                    //clienteCardapio();
                     break;
                 case "2": 
-                    ManterCliente manterCliente = new ManterCliente();
+                    ManterClienteView manterCliente = new ManterClienteView();
                     manterCliente.console_load();
                     break;
                 case "3":
-                    ManterFuncionario manterFuncionario = new ManterFuncionario();
+                    ManterFuncionarioView manterFuncionario = new ManterFuncionarioView();
                     manterFuncionario.console_load();
                     break;
                 case "4":
-                    ManterMesa manterMesa = new ManterMesa();
+                    ManterMesaView manterMesa = new ManterMesaView();
                     manterMesa.console_load();
                     break;
                 case "5":
-                    ManterItem manterItem = new ManterItem();
+                    ManterItemView manterItem = new ManterItemView();
                     manterItem.console_load();
                     break;
                 default: sair = -1;
@@ -60,19 +62,19 @@ public class Console {
         }while(sair == 0);
     }
     
-    public static void clienteCardapio() throws IOException{
-        Scanner scanner = new Scanner(System.in);
-        Cardapio cardapio = new Cardapio();
-        CardapioDao cardapioDao = new CardapioDao();
-        cardapio = cardapioDao.abrirCardapio();
-        
-        //for(short i=0; i<20; i++) System.out.println("\n"); //limpar tela (bizarro, mas não achei coisa melhor).
-        System.out.println("   Cardápio   ");
-        for(Item item: cardapio.getListItem()){
-            System.out.printf("%d. %s ..... R$ %.2f\n",item.getIdItem(), item.getNome(), item.getValor());
-        }
-        short menuCardapio = scanner.nextShort();
-        scanner.nextLine();
-    }
+//    public static void clienteCardapio() throws IOException{
+//        Scanner scanner = new Scanner(System.in);
+//        CardapioView cardapio = new CardapioView();
+//        CardapioDao cardapioDao = new CardapioDao();
+//        cardapio = cardapioDao.abrirCardapio();
+//        
+//        //for(short i=0; i<20; i++) System.out.println("\n"); //limpar tela (bizarro, mas não achei coisa melhor).
+//        System.out.println("   Cardápio   ");
+//        for(Item item: cardapio.getListItem()){
+//            System.out.printf("%d. %s ..... R$ %.2f\n",item.getIdItem(), item.getNome(), item.getValor());
+//        }
+//        short menuCardapio = scanner.nextShort();
+//        scanner.nextLine();
+//    }
 
 }

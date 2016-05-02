@@ -16,7 +16,7 @@ import model.*;
  *
  * @author Igor
  */
-public class ManterItem {
+public class ManterItemView {
    
     private List<Item> listItem = new ArrayList();
     public void console_load() throws IOException{

@@ -33,19 +33,19 @@ public class Pedido {
     }
 
     /**
-     * @return the Conta
+     * @return the conta
      */
     public Conta getConta() {
         return conta;
     }
 
     /**
-     * @param Conta the Conta to set
+     * @param conta the conta to set
      */
-    public void setConta(Conta Conta) {
-        this.conta = Conta;
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
-
+    
     /**
      * @return the item
      */

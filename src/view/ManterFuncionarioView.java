@@ -16,7 +16,7 @@ import model.*;
  *
  * @author Igor
  */
-public class ManterFuncionario {
+public class ManterFuncionarioView {
     private List<Funcionario> listFuncionario = new ArrayList();
     public void console_load() throws IOException{
         Scanner scanner = new Scanner(System.in);
