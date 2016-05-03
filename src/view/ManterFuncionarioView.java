@@ -24,7 +24,7 @@ public class ManterFuncionarioView {
         int sair =0;
         do{
             //for(short i=0; i<20; i++) System.out.println("\n");
-            System.out.println("   Funcionario   ");
+            System.out.printf("\n   Funcionario   \n");
             System.out.println("1. Adicionar Funcionario");
             System.out.println("2. Exibir Funcionario");
             System.out.println("3. Alterar Funcionario");
@@ -44,7 +44,7 @@ public class ManterFuncionarioView {
                     break;
                 case "4": funcionarioExcluir();
                     break;
-                default: sair =-1;
+                default: sair =1;
             }
         }while(sair == 0);
     
@@ -56,7 +56,7 @@ public class ManterFuncionarioView {
         Funcionario funcionario = new Funcionario();
         
         //for(short i=0; i<20; i++) System.out.println("\n");
-        System.out.println("   Adicionar Funcionario:");
+        System.out.printf("\n   Adicionar Funcionario:\n");
         System.out.print("Nome: ");
         funcionario.setNome(scanner.nextLine());
         System.out.print("cpf: ");
@@ -71,17 +71,14 @@ public class ManterFuncionarioView {
     
     public void funcionarioAlterar() throws IOException{
         Scanner scanner = new Scanner(System.in);
-        Integer menuFuncionarioInt = scanner.nextInt();
+        Integer menuFuncionarioInt;
         FuncionarioDao funcionarioDao = new FuncionarioDao();
-        List<Funcionario> listFuncionario = new ArrayList();
         
         funcionarioExibir();
         System.out.print("Qual funcionario:   ");
         menuFuncionarioInt = scanner.nextInt();
-        scanner.reset();
 
-        ////for(short i=0; i<20; i++) System.out.println("\n");
-        System.out.println("   O que deseja alterar?   ");
+        System.out.println("\n   O que deseja alterar?   ");
         System.out.println("1. CPF");
         System.out.println("2. CTPS");
         System.out.println("3. Nome");

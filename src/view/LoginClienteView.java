@@ -12,7 +12,7 @@ import java.util.Scanner;
 import model.*;
 
 public class LoginClienteView {
-   
+
     public Conta console_load(Conta conta) throws IOException{
         Scanner scanner = new Scanner(System.in);
         Boolean TrueOuFalse = true;

@@ -24,11 +24,11 @@ public class ModuloClienteView {
     private Conta conta = new Conta();
     
     //Inicia Conta;
-    public Conta console_load() throws IOException, ParseException{
-        String finalizaConta = "n";
+    public void console_load() throws IOException, ParseException{
+        String menuModuloCliente = "n";
         LoginClienteView loginClienteView = new LoginClienteView();
         this.conta = loginClienteView.console_load(conta);
-        
+        Boolean sair = true;
         Scanner scanner = new Scanner(System.in);
         do{
             System.out.println("  O que deseja: ");
@@ -37,24 +37,38 @@ public class ModuloClienteView {
             System.out.println("3. Fechar Conta ");
             System.out.print("Opção: ");
             
-            finalizaConta = scanner.next();
-            CardapioView cardapioView = new CardapioView();
-            switch( finalizaConta )
+            menuModuloCliente = scanner.next();
+            switch( menuModuloCliente )
             {
                 case "1":
-                    cardapioView.console_load();
+                    cardapioExibir();
                     break;
                 case "2":
                     novoPedido();
                     break;
                 case "3":
                     fecharConta();
-                    finalizaConta = "Finaliza";
+                    sair = false;
                     break;
                 default:
             }
-        }while (finalizaConta.toUpperCase().equals("Finaliza"));
-        return conta;
+        }while (sair);
+        //return conta;
+    }
+    
+    public void cardapioExibir() throws IOException{
+        
+        List<Item> listItem = new ArrayList();
+        ItemDao itemDao = new ItemDao();
+        listItem = itemDao.abrirItemCardapio();
+        
+        System.out.println("  Cardápio Digital:  ");
+        for(Item item: listItem){
+            if(item.getDisponivel() == true){
+                System.out.printf("%d. %s \t R$ %.2f\n", item.getIdItem(),
+                                    item.getNome(), item.getValor());
+            }
+        }
     }
     
     // Cliente informa qual pedido e quantidade.
@@ -65,8 +79,7 @@ public class ModuloClienteView {
         Pedido pedido = new Pedido();
         pedido.setConta(conta);
         
-        CardapioView cardapioView = new CardapioView();
-        cardapioView.console_load();
+        cardapioExibir();
         System.out.print("Informe o número do item: ");
         Integer idItem = scanner.nextInt();
         ItemDao itemDao = new ItemDao();

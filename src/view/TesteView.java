@@ -22,7 +22,7 @@ import java.util.Date;
  * @author iandrade
  */
 public class TesteView {
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main2(String[] args) throws IOException, ParseException {
        
         //Teste cliente::
         /*Cliente cliente = new Cliente();
@@ -137,10 +137,15 @@ public class TesteView {
         listPedido = pedidoDao.abrirPedido();
         if(true){}
         Conta conta = new Conta();
-        conta.setIdConta(2);*/
-        Pedido pedido = new Pedido();
+        conta.setIdConta(2);
+        Pedido pedido = new Pedido();*/
         PedidoDao pedidoDao = new PedidoDao();
+        Funcionario garcom = new Funcionario();
+        garcom.setIdFuncionario(1);
         List<Pedido> listPedido = pedidoDao.abrirPedidoVisaoGarcom();
+        ModuloFuncionarioView moduloFuncionarioView = new ModuloFuncionarioView();
+        moduloFuncionarioView.GarcomConfirmarEntregaPedidos(garcom);
+        
         if(true){}
         
         

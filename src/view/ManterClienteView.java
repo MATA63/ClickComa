@@ -46,7 +46,7 @@ public class ManterClienteView {
                     break;
                 case "4": clienteExcluir();
                     break;
-                default: sair =-1;
+                default: sair =1;
             }
         }while(sair == 0);
     

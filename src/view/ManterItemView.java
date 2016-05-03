@@ -24,8 +24,7 @@ public class ManterItemView {
         String menuItemString;
         int sair =0;
         do{
-            //for(short i=0; i<20; i++) System.out.println("\n");
-            System.out.println("   Item   ");
+            System.out.println("\n   Item   ");
             System.out.println("1. Adicionar Item");
             System.out.println("2. Exibir Item");
             System.out.println("3. Alterar Item");
@@ -34,7 +33,6 @@ public class ManterItemView {
             System.out.print("Opção: ");
 
             menuItemString = scanner.next();
-            scanner.nextLine();
             switch( menuItemString )
             {
                 case "1": itemAdicionar();
@@ -45,7 +43,7 @@ public class ManterItemView {
                     break;
                 case "4": itemExcluir();
                     break;
-                default: sair =-1;
+                default: sair =1;
             }
         }while(sair == 0);
     
@@ -85,18 +83,14 @@ public class ManterItemView {
     
     public void itemAlterar() throws IOException{
         Scanner scanner = new Scanner(System.in);
-        Integer menuItemInt = scanner.nextInt();
+        Integer menuItemInt;
         ItemDao itemDao = new ItemDao();
-        Item item = new Item();
-        List<Item> listItem = new ArrayList();
         
         itemExibir();
         System.out.print("Qual item:   ");
         menuItemInt = scanner.nextInt();
-        scanner.reset();
 
-        ////for(short i=0; i<20; i++) System.out.println("\n");
-        System.out.println("   O que deseja alterar?   ");
+        System.out.printf("\n   O que deseja alterar?   \n");
         System.out.println("1. Nome");
         System.out.println("2. Disponibilidade");
         System.out.println("3. Necessidade de Preparo");
@@ -116,7 +110,7 @@ public class ManterItemView {
     public void itemExibir() throws IOException{
         ItemDao itemDao = new ItemDao();
         listItem = itemDao.abrirItem();
-        System.out.println("   Items");
+        System.out.printf("\n   Items\n");
         for(Item item: listItem){
             System.out.printf("%d. %s  |  %b  |  %b  |  R$ %.2f\n", 
                     item.getIdItem(), item.getNome(), 
@@ -130,7 +124,7 @@ public class ManterItemView {
         ItemDao itemDao = new ItemDao();
         itemExibir();
         
-        System.out.print("Qual item:   ");
+        System.out.printf("\nQual item:   ");
         Integer menuItemDeleteInt = scanner.nextInt();
         
         if(itemDao.excluirItem(menuItemDeleteInt) != null){

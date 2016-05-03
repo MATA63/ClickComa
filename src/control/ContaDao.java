@@ -135,8 +135,8 @@ public class ContaDao {
         Integer idConta;
         Cliente cliente = new Cliente();
         Mesa mesa = new Mesa();
-        Date dataHoraInicioAtendimento;
-        Date dataHoraFimAtendimento;
+        Date dataHoraInicioAtendimento = null;
+        Date dataHoraFimAtendimento = null;
         fr = new BufferedReader(new FileReader("Conta.cc"));
 
         while ((linha = fr.readLine()) != null) {
@@ -144,9 +144,15 @@ public class ContaDao {
             cliente.setIdCliente(Integer.parseInt(linha.substring(linha.indexOf("<idCliente>")+11, linha.indexOf("<idMesa>"))));
             mesa.setIdMesa(Integer.parseInt(linha.substring(linha.indexOf("<idMesa>")+8, linha.indexOf("<dataHoraInicioAtendimento>"))));
             dataHoraInicioAtendimento = formatter.parse(linha.substring(linha.indexOf("<dataHoraInicioAtendimento>")+27, linha.indexOf("<dataHoraFimAtendimento>")));
-            dataHoraFimAtendimento = formatter.parse(linha.substring(linha.indexOf("<dataHoraFimAtendimento>")+24, linha.indexOf("<fdl>")));
             
-            if(idContaProcurado == cliente.getIdCliente()){
+            String dataFimAtendimento = linha.substring(linha.indexOf("<dataHoraFimAtendimento>")+24, linha.indexOf("<fdl>"));
+            if(dataFimAtendimento.equals("null")){
+                dataFimAtendimento = null;
+            }else{
+                dataHoraFimAtendimento = formatter.parse(dataFimAtendimento);
+            }
+
+            if(idContaProcurado == idContaProcurado){
                 Conta conta = new Conta(idConta, cliente, mesa, dataHoraInicioAtendimento, dataHoraFimAtendimento);
                 return conta;
             }

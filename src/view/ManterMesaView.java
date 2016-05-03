@@ -44,7 +44,7 @@ public class ManterMesaView {
                     break;
                 case "4": mesaExcluir();
                     break;
-                default: sair =-1;
+                default: sair =1;
             }
         }while(sair == 0);
     
@@ -67,7 +67,7 @@ public class ManterMesaView {
    
     public void mesaAlterar() throws IOException{
         Scanner scanner = new Scanner(System.in);
-        Integer menuMesaInt = scanner.nextInt();
+        Integer menuMesaInt;
         MesaDao mesaDao = new MesaDao();
         List<Mesa> listMesa = new ArrayList();
         
@@ -82,7 +82,6 @@ public class ManterMesaView {
         System.out.println("2. Local");
         System.out.print("Opção: ");
         Integer menuAlterar = scanner.nextInt();
-        scanner.reset();
         
         System.out.print("Alterar por: ");
         String novoAtributoMesa = scanner.next();
