@@ -113,7 +113,7 @@ public class TesteView {
          if(true){}
         
         //Teste Pedido*/
-        /* List<Conta> listConta = new ArrayList();
+         /*List<Conta> listConta = new ArrayList();
          ContaDao contaDao = new ContaDao();
          listConta = contaDao.abrirConta();
          
@@ -137,11 +137,18 @@ public class TesteView {
         listPedido = pedidoDao.abrirPedido();
         if(true){}
         Conta conta = new Conta();
-        conta.setIdConta(2);
+        conta.setIdConta(2);*/
         Pedido pedido = new Pedido();
         PedidoDao pedidoDao = new PedidoDao();
-        pedido = pedidoDao.abrirPedido(conta);
-        if(true){}*/
+        List<Pedido> listPedido = pedidoDao.abrirPedidoVisaoGarcom();
+        if(true){}
+        
+        
+       /* Visão Cliente
+        Pedido pedido = new Pedido();
+        PedidoDao pedidoDao = new PedidoDao();
+        PedidoView pedidoView = new PedidoView();
+        pedidoView.console_load();*/
         
         
     }

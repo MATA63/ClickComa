@@ -24,10 +24,11 @@ public class ClienteDao {
     private BufferedWriter bw = null;
     private BufferedReader fr = null;
 
-    public void salvarCliente(Cliente cliente) throws IOException{
+    public Cliente salvarCliente(Cliente cliente) throws IOException{
         try{
-            bw = new BufferedWriter(new FileWriter("Cliente.cc", true));  
-            bw.write("<idCliente>"+cliente.getIdCliente().toString()
+            bw = new BufferedWriter(new FileWriter("Cliente.cc", true));
+            cliente.setIdCliente(maiorIdCliente()+1);
+            bw.write("<idCliente>"+cliente.getIdCliente()
                         +"<nome>"+cliente.getNome()
                         +"<cpf>"+cliente.getCpf()
                         +"<email>"+cliente.getEmail()+"<fdl>");
@@ -39,6 +40,7 @@ public class ClienteDao {
         }finally{
         }
         System.out.println("Salvo com Sucesso!");
+        return cliente;
     }
 
     public void salvarCliente(List<Cliente> listCliente) throws IOException{

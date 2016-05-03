@@ -26,11 +26,11 @@ public class LoginClienteView {
             Cliente cliente = clienteDao.abrirCliente(scanner.next());
             if(cliente != null){
                 conta.setCliente(cliente);
+                TrueOuFalse = false;
             }else{
                 System.out.println("Cliente não encontrado!");
-                System.out.println("Informar novamente o CPF (s/n)?");
+                System.out.print("Informar novamente o CPF (s/n)? ");
                 if(scanner.next().toUpperCase().equals("S")){
-
                     TrueOuFalse = true;
                 }else{
                     TrueOuFalse = false;
@@ -44,13 +44,14 @@ public class LoginClienteView {
         // Verifica Mesa
         MesaDao mesaDao = new MesaDao();
         do{
-            System.out.print("Informe Numero : ");
+            System.out.print("Informe Numero: ");
             Mesa mesa = mesaDao.abrirMesa(scanner.nextInt());
             if(mesa != null){
                 conta.setMesa(mesa);
+                TrueOuFalse = false;
             }else{
                 System.out.println("Mesa não encontrada!");
-                System.out.println("Informar novamente a mesa (s/n)?");
+                System.out.print("Informar novamente a mesa (s/n)? ");
                 if(scanner.next().toUpperCase().equals("S")){
                     TrueOuFalse = true;
                 }else{
@@ -60,8 +61,11 @@ public class LoginClienteView {
         }while(TrueOuFalse);
         
         // Informa data da abertura do atendimento
+        // Salva Registro da Conta
         if(conta.getCliente() != null && conta.getMesa() != null){
             conta.setDataHoraInicioAtendimento(new Date());
+            ContaDao contaDao = new ContaDao();
+            conta = contaDao.salvarConta(conta);      
             return conta;
         }else{
             return null;

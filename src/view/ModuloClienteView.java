@@ -9,6 +9,7 @@ import java.io.IOException;
 import model.*;
 import control.*;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,16 +20,11 @@ import java.util.Scanner;
  *
  * @author Igor
  */
-public class PedidoView {
-    private Conta conta;
+public class ModuloClienteView {
+    private Conta conta = new Conta();
     
     //Inicia Conta;
-    //
-    // NÃO TESTADO!!!!!!
-    // NÃO TESTADO!!!!!!
-    // NÃO TESTADO!!!!!!
-    //
-    public Conta console_load() throws IOException{
+    public Conta console_load() throws IOException, ParseException{
         String finalizaConta = "n";
         LoginClienteView loginClienteView = new LoginClienteView();
         this.conta = loginClienteView.console_load(conta);
@@ -57,18 +53,20 @@ public class PedidoView {
                     break;
                 default:
             }
-
         }while (finalizaConta.toUpperCase().equals("Finaliza"));
-        
         return conta;
     }
     
-    public Conta novoPedido() throws IOException{
+    // Cliente informa qual pedido e quantidade.
+    //TODO: Nesse momento vai enviar informação para o módulo Garçom e Cozinheiro.
+    public void novoPedido() throws IOException{
         Scanner scanner = new Scanner(System.in);
         PedidoDao pedidoDao = new PedidoDao();
         Pedido pedido = new Pedido();
         pedido.setConta(conta);
         
+        CardapioView cardapioView = new CardapioView();
+        cardapioView.console_load();
         System.out.print("Informe o número do item: ");
         Integer idItem = scanner.nextInt();
         ItemDao itemDao = new ItemDao();
@@ -79,19 +77,17 @@ public class PedidoView {
         
         pedido.setDataHora(new Date());
         
-        pedidoDao.salvarPedido(pedido);
-        return null;
+        pedido = pedidoDao.salvarPedido(pedido);
     }
     
-    public void fecharConta() throws IOException{
+    public void fecharConta() throws IOException, ParseException{
         List<Pedido> listPedido = new ArrayList();
         PedidoDao pedidoDao = new PedidoDao();
         listPedido = pedidoDao.abrirPedido(conta);
-        exibirFechamentoConta(listPedido);
-        /*
-        * COnfirmação do cliente
-        */
-        
+        exibirFechamentoConta(listPedido);        
+        conta.setDataHoraFimAtendimento(new Date());
+        ContaDao contaDao = new ContaDao();
+        conta = contaDao.alterarConta(conta);
     }
     
     public void exibirFechamentoConta(List<Pedido> listPedido) throws IOException{
@@ -99,16 +95,15 @@ public class PedidoView {
         if(listPedido == null){
             System.out.println("Não foi pedido nada. Conta vazia!");
         }else{
-            System.out.printf("   Conta:  ");
-            System.out.printf("Nº Pedido | Quantidade | Nome Produto | Valor ");
+            System.out.println("   Conta:  ");
+            System.out.println("Nº | Quantidade |    Nome     |    Valor ");
             for(Pedido pedido: listPedido){
-                System.out.printf("%d. %d \t %s \t %.2f"+
+                System.out.printf("%d.\t %d \t %s \t %.2f\n",
                                     pedido.getIdPedido(), pedido.getQuantidade(),
                                     pedido.getItem().getNome(), pedido.getItem().getValor());
                 valorTotal = ( pedido.getItem().getValor() * pedido.getQuantidade() ) + valorTotal;
             }
-            System.out.printf("Total: "+ valorTotal);
-            
+            System.out.printf("Total: R$ %.2f \n", valorTotal);
         }
     }
     

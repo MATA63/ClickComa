@@ -7,6 +7,7 @@ package control;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,15 +28,25 @@ public class ContaDao {
     private BufferedWriter bw = null;
     private BufferedReader fr = null;
 
-    public void salvarConta(Conta conta) throws IOException{
+    public Conta salvarConta(Conta conta) throws IOException{
         try{
             DateFormat formatacaoData = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             bw = new BufferedWriter(new FileWriter("Conta.cc", true));  
-            bw.write("<idConta>"+conta.getIdConta().toString()
-                        +"<idCliente>"+conta.getCliente().getIdCliente().toString()
-                        +"<idMesa>"+conta.getMesa().getIdMesa().toString()
-                        +"<dataHoraInicioAtendimento>"+formatacaoData.format(conta.getDataHoraInicioAtendimento())
-                        +"<dataHoraFimAtendimento>"+formatacaoData.format(conta.getDataHoraFimAtendimento())+"<fdl>");
+            conta.setIdConta(maiorIdConta()+1);
+
+            if(conta.getDataHoraFimAtendimento() == null){
+                bw.write("<idConta>"+conta.getIdConta()
+                            +"<idCliente>"+conta.getCliente().getIdCliente().toString()
+                            +"<idMesa>"+conta.getMesa().getIdMesa().toString()
+                            +"<dataHoraInicioAtendimento>"+formatacaoData.format(conta.getDataHoraInicioAtendimento())
+                            +"<dataHoraFimAtendimento>"+"null"+"<fdl>");
+            }else{
+                bw.write("<idConta>"+conta.getIdConta()
+                            +"<idCliente>"+conta.getCliente().getIdCliente().toString()
+                            +"<idMesa>"+conta.getMesa().getIdMesa().toString()
+                            +"<dataHoraInicioAtendimento>"+formatacaoData.format(conta.getDataHoraInicioAtendimento())
+                            +"<dataHoraFimAtendimento>"+formatacaoData.format(conta.getDataHoraFimAtendimento())+"<fdl>");
+            } 
             bw.newLine();
             bw.flush();
             bw.close();    
@@ -44,7 +55,43 @@ public class ContaDao {
         }finally{
         }
         System.out.println("Salvo com Sucesso!");
+        return conta;
     }
+    
+    public void salvarConta(List<Conta> listConta) throws IOException{
+        try{
+            //Sobrescrever todas as Contas.
+            File file = new File("Conta.cc");
+            if ( file.exists()) {
+                FileWriter fw = new FileWriter("Conta.cc",false);
+            }
+            DateFormat formatacaoData = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            bw = new BufferedWriter(new FileWriter("Conta.cc", true)); 
+            for(Conta conta: listConta){
+                if(conta.getDataHoraFimAtendimento() == null){
+                    bw.write("<idConta>"+conta.getIdConta()
+                                +"<idCliente>"+conta.getCliente().getIdCliente().toString()
+                                +"<idMesa>"+conta.getMesa().getIdMesa().toString()
+                                +"<dataHoraInicioAtendimento>"+formatacaoData.format(conta.getDataHoraInicioAtendimento())
+                                +"<dataHoraFimAtendimento>"+"null"+"<fdl>");
+                }else{
+                    bw.write("<idConta>"+conta.getIdConta()
+                                +"<idCliente>"+conta.getCliente().getIdCliente().toString()
+                                +"<idMesa>"+conta.getMesa().getIdMesa().toString()
+                                +"<dataHoraInicioAtendimento>"+formatacaoData.format(conta.getDataHoraInicioAtendimento())
+                                +"<dataHoraFimAtendimento>"+formatacaoData.format(conta.getDataHoraFimAtendimento())+"<fdl>");
+                }
+                bw.newLine();
+                bw.flush();
+            }
+            bw.close();    
+        }catch(Exception e){ 
+            System.out.println("Ocorreu um erro ao salvar no arquivo Conta.cc. Exception: "+e.getMessage());
+        }finally{
+        }
+        System.out.println("Salvo com Sucesso!");
+    }
+    
     
     public List<Conta> abrirConta() throws IOException, ParseException{
     List<Conta> listConta = new ArrayList();
@@ -63,8 +110,12 @@ public class ContaDao {
             cliente.setIdCliente(Integer.parseInt(linha.substring(linha.indexOf("<idCliente>")+11, linha.indexOf("<idMesa>"))));
             mesa.setIdMesa(Integer.parseInt(linha.substring(linha.indexOf("<idMesa>")+8, linha.indexOf("<dataHoraInicioAtendimento>"))));
             dataHoraInicioAtendimento = formatter.parse(linha.substring(linha.indexOf("<dataHoraInicioAtendimento>")+27, linha.indexOf("<dataHoraFimAtendimento>")));
-            dataHoraFimAtendimento = formatter.parse(linha.substring(linha.indexOf("<dataHoraFimAtendimento>")+24, linha.indexOf("<fdl>")));
-
+            String verificaNullData = linha.substring(linha.indexOf("<dataHoraFimAtendimento>")+24, linha.indexOf("<fdl>"));
+            if(verificaNullData.equals("null")){
+                dataHoraFimAtendimento = null;
+            }else{
+                dataHoraFimAtendimento = formatter.parse(verificaNullData);
+            }
             listConta.add(new Conta(idConta, cliente, mesa, dataHoraInicioAtendimento, dataHoraFimAtendimento));
         }
     } catch (ParseException e){
@@ -108,5 +159,41 @@ public class ContaDao {
     }
     return null;
     }
+    
+    public Integer maiorIdConta() throws IOException, ParseException{
+        Integer maiorIdConta=0;
+        List<Conta> listConta = new ArrayList();
+        listConta = abrirConta();
+        
+        if(listConta.size() > 0){
+            for(Conta conta: listConta){
+                if( maiorIdConta < conta.getIdConta()){
+                    maiorIdConta = conta.getIdConta();
+                }
+            }
+            return maiorIdConta;
+        }else{
+            return 0;
+        }
+    }
+    
+    public Conta alterarConta(Conta conta) throws IOException, ParseException{
+        List<Conta> listConta = new ArrayList();
+        try{
+            listConta = abrirConta();
+            int i;
+            for(i = listConta.size()-1 ; i>= -1; i-- ){
+                if( listConta.get(i).getIdConta() == conta.getIdConta() ){
+                    break;
+                }
+            }
+            listConta.set(i, conta);
+            salvarConta(listConta);
+            return conta;
+        }catch(Exception e){ 
+        }
+        return null;
+    }
+
     
 }

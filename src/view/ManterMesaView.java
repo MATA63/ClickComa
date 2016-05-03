@@ -61,7 +61,6 @@ public class ManterMesaView {
         mesa.setLocal(scanner.nextLine());
         System.out.print("Numero: ");
         mesa.setNumero(scanner.next());
-        mesa.setIdMesa(mesaDao.maiorIdMesa()+1);
         
         mesaDao.salvarMesa(mesa);                
     }

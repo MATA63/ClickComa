@@ -79,7 +79,6 @@ public class ManterItemView {
         scanner.reset();
         System.out.print("Valor: ");
         item.setValor(scanner.nextFloat());
-        item.setIdItem(itemDao.maiorIdItem()+1);
         
         itemDao.salvarItem(item);                
     }

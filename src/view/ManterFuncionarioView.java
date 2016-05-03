@@ -66,7 +66,6 @@ public class ManterFuncionarioView {
 
         System.out.print("Cargo: ");
         funcionario.setCargo(scanner.next());
-        funcionario.setIdFuncionario(funcionarioDao.maiorIdFuncionario()+1);
         funcionarioDao.salvarFuncionario(funcionario);                
     }
     

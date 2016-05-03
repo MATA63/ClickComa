@@ -24,10 +24,11 @@ public class MesaDao {
     private BufferedWriter bw = null;
     private BufferedReader fr = null;
 
-    public void salvarMesa(Mesa mesa) throws IOException{
+    public Mesa salvarMesa(Mesa mesa) throws IOException{
         try{
-                bw = new BufferedWriter(new FileWriter("Mesa.cc", true));  
-                bw.write("<idMesa>"+mesa.getIdMesa().toString()
+                bw = new BufferedWriter(new FileWriter("Mesa.cc", true));
+                mesa.setIdMesa(maiorIdMesa()+1);
+                bw.write("<idMesa>"+mesa.getIdMesa()
                             +"<numero>"+mesa.getNumero()
                             +"<local>"+mesa.getLocal()+"<fdl>");
                 bw.newLine();
@@ -38,6 +39,7 @@ public class MesaDao {
         }finally{
         }
         System.out.println("Salvo com Sucesso!");
+        return mesa;
     }
     
     public void salvarMesa(List<Mesa> listMesa) throws IOException{

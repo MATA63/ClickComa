@@ -24,10 +24,11 @@ public class ItemDao {
     private BufferedWriter bw = null;
     private BufferedReader fr = null;
 
-    public void salvarItem(Item item) throws IOException{
+    public Item salvarItem(Item item) throws IOException{
         try{
-                bw = new BufferedWriter(new FileWriter("Item.cc", true));  
-                bw.write("<idItem>"+item.getIdItem().toString()
+                bw = new BufferedWriter(new FileWriter("Item.cc", true)); 
+                item.setIdItem(maiorIdItem()+1);
+                bw.write("<idItem>"+item.getIdItem()
                             +"<nome>"+item.getNome()
                             +"<valor>"+item.getValor()
                             +"<disponivel>"+item.getDisponivel().toString()
@@ -40,6 +41,7 @@ public class ItemDao {
         }finally{
         }
         System.out.println("Salvo com Sucesso!");
+        return item;
     }
 
     public void salvarItem(List<Item> listItem) throws IOException{
@@ -106,7 +108,7 @@ public class ItemDao {
 
         while ((linha = fr.readLine()) != null) {
             idItem = Integer.parseInt(linha.substring(linha.indexOf("<idItem>")+8,linha.indexOf("<nome>")));
-            nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<disponivel>"));
+            nome = linha.substring(linha.indexOf("<nome>")+6, linha.indexOf("<valor>"));
             valor = Float.parseFloat(linha.substring(linha.indexOf("<valor>")+7, linha.indexOf("<disponivel>")));
             disponivel = Boolean.parseBoolean(linha.substring(linha.indexOf("<disponivel>")+12, linha.indexOf("<necessitaPreparo>")));
             necessitaPreparo = Boolean.parseBoolean(linha.substring(linha.indexOf("<necessitaPreparo>")+18, linha.indexOf("<fdl>")));
@@ -123,6 +125,19 @@ public class ItemDao {
     return null;
     }
     
+    public List<Item> abrirItemCardapio() throws IOException{
+        List<Item> listItem = new ArrayList();
+        List<Item> listItemCardapio = new ArrayList();
+        listItem = abrirItem();
+        
+        for(Item item: listItem){
+            if(item.getDisponivel() == true){
+                listItemCardapio.add(item);
+            }
+        }
+        return listItemCardapio;
+    }
+
     public Integer maiorIdItem() throws IOException{
         Integer maiorIdItem=0;
         List<Item> listItem = new ArrayList();

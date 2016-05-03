@@ -21,8 +21,30 @@ import view.*;
  */
 public class ConsoleView {
     public static void main2(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
         int sair =0;
         do{
+            
+            
+            System.out.println("   Selecione o módulo  ");
+            System.out.println("1. Cliente");
+            System.out.println("2. Funcionário");
+            System.out.println("3. Sair");
+            String menuModulo = scanner.nextLine();
+            switch( menuModulo )
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                default:
+                    System.out.println("Opção inexistente.");
+            }
+            
+            
+            
             //for(short i=0; i<20; i++) System.out.println("\n");
             System.out.println("   Selecione o módulo  [Organizar depois o Menu] ");
             System.out.println("1. Cliente");
@@ -31,7 +53,6 @@ public class ConsoleView {
             System.out.println("4. Gerente- ManterMesa");
             System.out.println("5. Funcionario- ManterItem");
             System.out.println("6. Sair");
-            Scanner scanner = new Scanner(System.in);
             String menuPrincipal = scanner.nextLine();
             switch( menuPrincipal )
             {

@@ -25,7 +25,7 @@ public class CardapioView {
     public void cardapioExibir() throws IOException{
         List<Item> listItem = new ArrayList();
         ItemDao itemDao = new ItemDao();
-        listItem = itemDao.abrirItem();
+        listItem = itemDao.abrirItemCardapio();
         
         for(Item item: listItem){
             if(item.getDisponivel() == true){

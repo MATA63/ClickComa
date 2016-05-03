@@ -28,7 +28,7 @@ public class CardapioDao {
     //private List<Item> listItem;
     public void salvarCardapio(Cardapio cardapio) throws IOException{
         try{
-                //Apagar todo o arquivo para depois escrever todos os itens do cardápio.
+                //Apagar todo o arquivo para sobrescrever todos os itens do cardápio (diponiveis == true).
                 File file = new File("Cardapio.cc");
                 if ( file.exists()) {
                     FileWriter fw = new FileWriter("Cardapio.cc",false);
@@ -61,9 +61,9 @@ public class CardapioDao {
             
             fr = new BufferedReader(new FileReader("Cardapio.cc"));
             linha = fr.readLine();
-            cadeiaCaracteresParaFimDaLinha = linha.substring(linha.indexOf("<idItem>")+8);
+            cadeiaCaracteresParaFimDaLinha = linha.substring(linha.indexOf("<idItem>")+8);  //usado para percorer a linha e coletar os IDs dos Itens
             
-            //Verifica Entre a lista de todos os itens, quais pertecem a lista desse cardápio.
+            //Verifica Entre a lista de todos os itens, quais pertecem a lista do cardápio.
             while(cadeiaCaracteresParaFimDaLinha.length() > 7){
                 idItem = Integer.parseInt(cadeiaCaracteresParaFimDaLinha.substring(0, cadeiaCaracteresParaFimDaLinha.indexOf("<idItem>")));
                 for (Item item: listItemAll){

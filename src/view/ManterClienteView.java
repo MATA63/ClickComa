@@ -65,7 +65,6 @@ public class ManterClienteView {
         cliente.setCpf(scanner.next());
         System.out.print("e-mail: ");
         cliente.setEmail(scanner.next());
-        cliente.setIdCliente(clienteDao.maiorIdCliente()+1);
         
         clienteDao.salvarCliente(cliente);                
     }

@@ -23,22 +23,24 @@ public class FuncionarioDao {
     private BufferedWriter bw = null;
     private BufferedReader fr = null;
 
-    public void salvarFuncionario(Funcionario funcionario) throws IOException{
+    public Funcionario salvarFuncionario(Funcionario funcionario) throws IOException{
         try{
-                bw = new BufferedWriter(new FileWriter("Funcionario.cc", true));  
-                bw.write("<idFuncionario>"+funcionario.getIdFuncionario().toString()
-                            +"<cpf>"+funcionario.getCpf()
-                            +"<numeroCtps>"+funcionario.getNumeroCtps()
-                            +"<nome>"+funcionario.getNome()
-                            +"<cargo>"+funcionario.getCargo()+"<fdl>");
-                bw.newLine();
-                bw.flush();
-                bw.close();    
+            bw = new BufferedWriter(new FileWriter("Funcionario.cc", true));
+            funcionario.setIdFuncionario(maiorIdFuncionario()+1);
+            bw.write("<idFuncionario>"+funcionario.getIdFuncionario()
+                        +"<cpf>"+funcionario.getCpf()
+                        +"<numeroCtps>"+funcionario.getNumeroCtps()
+                        +"<nome>"+funcionario.getNome()
+                        +"<cargo>"+funcionario.getCargo()+"<fdl>");
+            bw.newLine();
+            bw.flush();
+            bw.close();    
         }catch(Exception e){ 
             System.out.println("Ocorreu um erro ao salvar no arquivo Funcionario.cc. Exception: "+e.getMessage());
         }finally{
         }
         System.out.println("Salvo com Sucesso!");
+        return funcionario;
     }
     
     public void salvarFuncionario(List<Funcionario> listFuncionario) throws IOException{
@@ -123,6 +125,37 @@ public class FuncionarioDao {
     return null;
     }
 
+    public Funcionario abrirFuncionario(String cpfProcurado) throws IOException{
+        try{
+            String linha;
+            Integer idFuncionario;
+            String cpf;
+            String numeroCtps;
+            String nome;
+            String cargo;
+
+            fr = new BufferedReader(new FileReader("Funcionario.cc"));
+
+            while ((linha = fr.readLine()) != null) {
+                idFuncionario = Integer.parseInt(linha.substring(linha.indexOf("<idFuncionario>")+15, linha.indexOf("<cpf>")));
+                cpf = linha.substring((linha.indexOf("<cpf>")+5), linha.indexOf("<numeroCtps>"));
+                numeroCtps = linha.substring((linha.indexOf("<numeroCtps>")+12), linha.indexOf("<nome>"));
+                nome = linha.substring((linha.indexOf("<nome>")+6), linha.indexOf("<cargo>"));
+                cargo = linha.substring((linha.indexOf("<cargo>")+7), linha.indexOf("<fdl>"));
+
+                if(cpfProcurado.equals(cpf)){
+                    Funcionario funcionarioProcurado = new Funcionario(idFuncionario, cpf, numeroCtps, nome, cargo);
+                    
+                    return funcionarioProcurado;
+                }
+            }
+        }catch(Exception e){ 
+            System.out.println("Ocorreu um erro ao ler o arquivo Funcionario.cc. Exception: "+e.getMessage());
+        }finally{
+        }
+        return null;
+    }
+    
     public Integer maiorIdFuncionario() throws IOException{
         Integer maiorIdFuncionario=0;
         List<Funcionario> listFuncionario = new ArrayList();
