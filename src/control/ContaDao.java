@@ -152,7 +152,7 @@ public class ContaDao {
                 dataHoraFimAtendimento = formatter.parse(dataFimAtendimento);
             }
 
-            if(idContaProcurado == idContaProcurado){
+            if(idContaProcurado == idConta){
                 Conta conta = new Conta(idConta, cliente, mesa, dataHoraInicioAtendimento, dataHoraFimAtendimento);
                 return conta;
             }

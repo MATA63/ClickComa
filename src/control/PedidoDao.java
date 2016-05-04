@@ -179,6 +179,7 @@ public class PedidoDao {
         Date dataHora;
         Funcionario garcom = new Funcionario();
         Funcionario cozinheiro = new Funcionario();
+        FuncionarioDao funcionarioDao = new FuncionarioDao();
         fr = new BufferedReader(new FileReader("Pedido.cc"));
 
         while ((linha = fr.readLine()) != null) {
@@ -197,13 +198,12 @@ public class PedidoDao {
             if(linha.substring(linha.indexOf("<garcom>")+8, linha.indexOf("<cozinheiro>")).equals("null")){
                 garcom = null;
             }else{
-                garcom.setIdFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<garcom>")+8, linha.indexOf("<cozinheiro>"))));
+                garcom = funcionarioDao.abrirFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<garcom>")+8, linha.indexOf("<cozinheiro>"))));
             }
-
             if(linha.substring(linha.indexOf("<cozinheiro>")+12, linha.indexOf("<fdl>")).equals("null")){
                 cozinheiro = null;
             }else{
-                cozinheiro.setIdFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<cozinheiro>")+12, linha.indexOf("<fdl>"))));
+                cozinheiro = funcionarioDao.abrirFuncionario(Integer.parseInt(linha.substring(linha.indexOf("<cozinheiro>")+12, linha.indexOf("<fdl>"))));
             }
             
             if (contaPesquisada.getIdConta() == conta.getIdConta()){
