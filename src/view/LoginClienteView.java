@@ -26,7 +26,29 @@ public class LoginClienteView {
             Cliente cliente = clienteDao.abrirCliente(scanner.next());
             if(cliente != null){
                 conta.setCliente(cliente);
-                TrueOuFalse = false;
+               
+                ManterMesaView manterMesa = new ManterMesaView();
+                manterMesa.mesaExibir();
+
+                // Verifica Mesa
+                MesaDao mesaDao = new MesaDao();
+                do{
+                    System.out.print("Informe Numero: ");
+                    Mesa mesa = mesaDao.abrirMesa(scanner.nextInt());
+                    if(mesa != null){
+                        conta.setMesa(mesa);
+                        TrueOuFalse = false;
+                    }else{
+                        System.out.println("Mesa não encontrada!");
+                        System.out.print("Informar novamente a mesa (s/n)? ");
+                        if(scanner.next().toUpperCase().equals("S")){
+                            TrueOuFalse = true;
+                        }else{
+                            TrueOuFalse = false;
+                        }
+                    }
+                }while(TrueOuFalse);
+                
             }else{
                 System.out.println("Cliente não encontrado!");
                 System.out.print("Informar novamente o CPF (s/n)? ");
@@ -38,27 +60,6 @@ public class LoginClienteView {
             }
         }while(TrueOuFalse);
         
-        ManterMesaView manterMesa = new ManterMesaView();
-        manterMesa.mesaExibir();
-
-        // Verifica Mesa
-        MesaDao mesaDao = new MesaDao();
-        do{
-            System.out.print("Informe Numero: ");
-            Mesa mesa = mesaDao.abrirMesa(scanner.nextInt());
-            if(mesa != null){
-                conta.setMesa(mesa);
-                TrueOuFalse = false;
-            }else{
-                System.out.println("Mesa não encontrada!");
-                System.out.print("Informar novamente a mesa (s/n)? ");
-                if(scanner.next().toUpperCase().equals("S")){
-                    TrueOuFalse = true;
-                }else{
-                    TrueOuFalse = false;
-                }
-            }
-        }while(TrueOuFalse);
         
         // Informa data da abertura do atendimento
         // Salva Registro da Conta

@@ -26,33 +26,37 @@ public class ModuloClienteView {
     //Inicia Conta;
     public void console_load() throws IOException, ParseException{
         String menuModuloCliente = "n";
+        Scanner scanner = new Scanner(System.in);
         LoginClienteView loginClienteView = new LoginClienteView();
         this.conta = loginClienteView.console_load(conta);
         Boolean sair = true;
-        Scanner scanner = new Scanner(System.in);
-        do{
-            System.out.println("  O que deseja: ");
-            System.out.println("1. Visualizar Cardapio ");
-            System.out.println("2. Solicitar Pedido ");
-            System.out.println("3. Fechar Conta ");
-            System.out.print("Opção: ");
-            
-            menuModuloCliente = scanner.next();
-            switch( menuModuloCliente )
-            {
-                case "1":
-                    cardapioExibir();
-                    break;
-                case "2":
-                    novoPedido();
-                    break;
-                case "3":
-                    fecharConta();
-                    sair = false;
-                    break;
-                default:
-            }
-        }while (sair);
+        
+        if(conta != null){
+            do{
+                System.out.println("  O que deseja: ");
+                System.out.println("1. Visualizar Cardapio ");
+                System.out.println("2. Solicitar Pedido ");
+                System.out.println("3. Fechar Conta ");
+                System.out.print("Opção: ");
+
+                menuModuloCliente = scanner.next();
+                switch( menuModuloCliente )
+                {
+                    case "1":
+                        cardapioExibir();
+                        break;
+                    case "2":
+                        novoPedido();
+                        break;
+                    case "3":
+                        fecharConta();
+                        sair = false;
+                        break;
+                    default:
+                }
+            }while (sair);
+        }
+
         //return conta;
     }
     
